@@ -1,10 +1,34 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaShoppingCart, FaRegHeart } from "react-icons/fa";
 
 export default function Navbar() {
+  const [fixTop, setFixTop] = useState(false);
+
+  useEffect(() => {
+    const fixNavbarToTop = () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 105) {
+        setFixTop(true);
+      } else {
+        setFixTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", fixNavbarToTop);
+
+    return () => window.removeEventListener("scroll", fixNavbarToTop);
+  }, []);
+
   return (
-    <nav className="hidden md:flex w-full h-20 shadow-lg bg-white">
+    <nav
+      className={`${
+        fixTop ? "fixed top-0 left-0 z-50" : "relative"
+      } hidden md:flex w-full h-20 shadow-lg bg-white`}
+    >
       <main className="container mx-auto h-full flex items-center justify-between px-4">
         {/* Logo */}
         <div>
