@@ -4,7 +4,7 @@ import { FaShoppingCart, FaRegHeart } from "react-icons/fa";
 
 export default function Navbar() {
   return (
-    <nav className="w-full h-20 shadow-lg bg-white">
+    <nav className="hidden md:flex w-full h-20 shadow-lg bg-white">
       <main className="container mx-auto h-full flex items-center justify-between px-4">
         {/* Logo */}
         <div>

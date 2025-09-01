@@ -14,6 +14,9 @@ module.exports = {
           lg: "0.625rem",
         },
       },
+      colors :{
+        green: '#114639'
+      }
     },
   },
    plugins: [
