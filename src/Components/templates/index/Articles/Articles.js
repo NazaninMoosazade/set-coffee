@@ -7,48 +7,30 @@ import Article from "./Article";
 
 const Articles = () => {
   return (
-    <div className="container text-center">
-      <p className='text-green text-4xl'>مقالات ما</p>
-      <span className="text-xl">دانستنی های جذاب دنیای قهوه</span>
-      <main>
+    <div className="container mx-auto text-center mt-20 px-4 sm:px-6 lg:px-8">
+      <p className="text-green-600 text-4xl font-bold">مقالات ما</p>
+      <span className="text-xl block mt-2">دانستنی های جذاب دنیای قهوه</span>
+
+      <main className="mt-10">
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={1}
+          spaceBetween={20}
           dir="rtl"
           autoplay={{ delay: 1500, disableOnInteraction: false }}
-          //   rewind={true}
           loop={true}
-          navigation={true}
+          // navigation={true}
           modules={[Navigation, Autoplay]}
-          className="mySwiper articles_slider"
+          breakpoints={{
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 40 },
+          }}
+          className="mt-10 relative"
         >
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Article />
-          </SwiperSlide>
+          {Array.from({ length: 9 }).map((_, idx) => (
+            <SwiperSlide key={idx}>
+              <Article />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </main>
     </div>
