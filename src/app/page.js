@@ -5,7 +5,7 @@ export default function page() {
   return (
     <>
       <Navbar />
-      <h1 className="text-red-800 text-4xl">hello</h1>
+      {/* <h1 className="text-red-800 text-4xl">hello</h1> */}
     </>
   );
 }
