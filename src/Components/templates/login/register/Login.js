@@ -58,12 +58,12 @@ const Login = () => {
       </div>
 
       {/* برگشت به خانه */}
-      <Link
+      {/* <Link
         href={"/"}
         className="block w-max mx-auto font-[shabnam] cursor-pointer text-sm text-[#34180e] hover:underline"
       >
         لغو
-      </Link>
+      </Link> */}
     </>
   );
 };

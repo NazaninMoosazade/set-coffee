@@ -58,7 +58,7 @@ export default function Navbar() {
             <Link href={"/roles"}>قوانین</Link>
           </li>
           <li>
-            <Link href={"/login"}>ورود / عضویت</Link>
+            <Link href={"/login/register"}>ورود / عضویت</Link>
           </li>
 
           {/* Start My-account section */}

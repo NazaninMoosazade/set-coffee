@@ -61,9 +61,9 @@ const Register = () => {
       </div>
 
       {/* لغو */}
-      <p className="block w-max mx-auto font-[shabnam] cursor-pointer text-sm text-[#34180e] hover:underline">
+      {/* <p className="block w-max mx-auto font-[shabnam] cursor-pointer text-sm text-[#34180e] hover:underline">
         لغو
-      </p>
+      </p> */}
     </>
   );
 };
