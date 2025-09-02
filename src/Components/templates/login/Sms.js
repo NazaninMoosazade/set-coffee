@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const Sms = () => {
+const Sms = ({hideOtpForm}) => {
   return (
     <>
       <div className="grid bg-white p-8 sm:p-12 w-full max-w-[380px] font-[shabnam] mx-auto mt-28 mb-8 rounded-xl shadow-md text-center text-black">
@@ -37,7 +37,7 @@ const Sms = () => {
       </div>
 
       {/* لغو */}
-      <p className="block w-max mx-auto font-[shabnam] cursor-pointer text-xs text-[#34180e] hover:underline">
+      <p onClick={hideOtpForm} className="block w-max mx-auto font-[shabnam] cursor-pointer text-xs text-[#34180e] hover:underline">
         لغو
       </p>
     </>
