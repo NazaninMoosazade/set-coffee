@@ -1,10 +1,13 @@
 const login_register = () => {
+ 
   return (
-    <div>
-      <div  data-aos="fade-up">
-        {/* 
+    <div className={styles.login_register}>
+      <div className={styles.form_bg} data-aos="fade-up">
+
           <Login showRegisterForm={showRegisterForm} />
-          <Register showloginForm={showloginForm} /> */}
+     
+          <Register showloginForm={showloginForm} />
+
       </div>
       <section>
         <img
