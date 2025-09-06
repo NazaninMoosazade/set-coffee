@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
 import Sms from "../Sms";
+import { showSwal } from "@/utils/helper";
+import { valiadteEmail, valiadtePassword, valiadtePhone } from "@/utils/auth";
 
 const Register = ({ showloginForm }) => {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
@@ -16,6 +18,34 @@ const Register = ({ showloginForm }) => {
   const hideOtpForm = () => setIsRegisterWithOtp(false);
 
   const signUp = async () => {
+    if (!name.trim()) {
+      showSwal("نام را وارد بکنید", "error", "  تلاش مجدد ");
+      return;
+    }
+
+    const isValidPhone = valiadtePhone(phone);
+    if (!isValidPhone) {
+      return showSwal(
+        "شماره تماس وارد شده صحیح نیست ",
+        "error",
+        "  تلاش مجدد "
+      );
+    }
+
+    const isValidEmai = valiadteEmail(email);
+    if (!isValidEmai) {
+      return showSwal(" ایمیل وارد شده صحیح نیست ", "error", "  تلاش مجدد ");
+    }
+
+    const isValidPassword = valiadtePassword(password);
+    if (!isValidPassword) {
+      return showSwal(
+        " پسوورد وارد شده قابل حدس هست ",
+        "error",
+        "  تلاش مجدد "
+      );
+    }
+
     const user = { name, phone, email, password };
 
     const res = await fetch("/api/auth/signup", {
@@ -25,12 +55,11 @@ const Register = ({ showloginForm }) => {
       },
       body: JSON.stringify(user),
     });
-    console.log(res);
-    if (res === 201) {
-      swal({
-        title: "ثبت نام انجام شد",
-        icon: "ok",
-      });
+    if (res.status === 201) {
+      showSwal("ثبت نام با موفقیت انجام شد", "success", "ورود به پنل کاربری");
+    } else if (res.status === 422) {
+      showSwal("کاربری با این اطلاعات وجود دارد", "error", " تلاش مجدد  ");
+
     }
   };
 
