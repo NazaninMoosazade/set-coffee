@@ -15,7 +15,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section className="w-full lg:w-1/3 px-4 lg:px-0">
+    <section className="w-full px-4 lg:px-0">
       {/* Main Image Slider */}
       <Swiper
         style={{
