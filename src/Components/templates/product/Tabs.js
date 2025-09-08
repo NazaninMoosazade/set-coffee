@@ -14,7 +14,7 @@ const Tabs = () => {
   ];
 
   return (
-    <div data-aos="fade-left" className="w-full lg:w-[63%] px-4 lg:px-0 mt-8">
+    <div data-aos="fade-left" className="w-full px-4 lg:px-0 mt-8">
       {/* Tab Buttons */}
       <ul className="flex flex-wrap justify-center gap-2 sm:gap-4 border-b border-gray-300">
         {tabs.map((t) => (

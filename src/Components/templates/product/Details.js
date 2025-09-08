@@ -3,16 +3,12 @@ import { IoCheckmark } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { TbSwitch3 } from "react-icons/tb";
 import { FaTelegram, FaLinkedinIn, FaPinterest } from "react-icons/fa";
-import Breadcrumb from "./Breadcrumb";
+
 
 const Details = () => {
   return (
     <main className="w-full lg:w-[63%] px-4 lg:px-0">
-      <Breadcrumb
-        title={
-          "کپسول قهوه SETpresso سازگار با دستگاه نسپرسو ( GOLD ) ده -10- عددی"
-        }
-      />
+
 
       {/* Title */}
       <h2 className="text-lg lg:text-xl font-bold leading-8 mt-4">

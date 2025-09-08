@@ -1,4 +1,4 @@
-import Comment from "@/components/modules/comment/Comment";
+import Comment from "@/Components/modules/Comment/Commnet";
 import CommentForm from "./CommentForm";
 
 const Comments = () => {
