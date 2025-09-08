@@ -6,7 +6,7 @@ import Image from "next/image";
 import { FaShoppingCart, FaRegHeart } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function Navbar({ isLogin }) {
+export default function Navbar({isLogin}) {
   const [fixTop, setFixTop] = useState(false);
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Navbar({ isLogin }) {
             <Link href={"/roles"}>قوانین</Link>
           </li>
 
-          {/* {isLogin ? (
+          {isLogin ? (
             <>
               <div className="relative group">
                 <Link
@@ -108,7 +108,7 @@ export default function Navbar({ isLogin }) {
             <li>
               <Link href={"/login/register"}>ورود / عضویت</Link>
             </li>
-          )} */}
+          )}
 
           {/* Finish My-account section */}
         </ul>

@@ -1,10 +1,19 @@
+// import {
+//   generateAccessToken,
+//   generateRefreshToken,
+//   valiadteEmail,
+//   valiadtePassword,
+//   verifyPassword,
+// } from "@/utils/auth";
+
 import {
   generateAccessToken,
   generateRefreshToken,
   valiadteEmail,
   valiadtePassword,
   verifyPassword,
-} from "@/utils/auth";
+} from "@/utils/global/auth";
+
 import UserModel from "@/models/User";
 import connectToDB from "@/configs/db";
 

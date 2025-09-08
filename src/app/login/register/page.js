@@ -5,6 +5,7 @@ import Login from "@/Components/templates/login/register/Login";
 import Register from "@/Components/templates/login/register/Register";
 import { authTypes } from "@/utils/contans";
 
+
 const LoginRegister = () => {
   const [authType, setAuthType] = useState(authTypes.LOGIN);
 

@@ -1,19 +1,19 @@
-"use client";
+
 import Gallery from "@/Components/templates/product/Gallery";
 import Details from "@/Components/templates/product/Details";
 import Tabs from "@/Components/templates/product/Tabs";
 import MoreProducts from "@/Components/templates/product/MoreProducts";
 import Footer from "@/Components/modules/Footer/Footer";
 import Navbar from "@/Components/modules/Navbar/Navbar";
-// import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/Server/auth";
 
-const ProductPage = async () => {
-//   const user = await authUser();
+const product = async () => {
+  const user = await authUser();
 
   return (
     <div className="overflow-auto">
       {/* Navbar */}
-      <Navbar  />
+      <Navbar isLogin={user} />
 
       {/* Main Content */}
       <div
@@ -50,4 +50,4 @@ const ProductPage = async () => {
   );
 };
 
-export default ProductPage;
+export default product;

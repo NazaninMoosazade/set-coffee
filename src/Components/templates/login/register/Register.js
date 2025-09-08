@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import swal from "sweetalert";
 import Sms from "../Sms";
 import { showSwal } from "@/utils/helper";
-import { valiadteEmail, valiadtePassword, valiadtePhone } from "@/utils/auth";
+// import { valiadteEmail, valiadtePassword, valiadtePhone } from "@/utils/auth";
+import { valiadteEmail , valiadtePassword , valiadtePhone } from "@/utils/global/auth";
 
 const Register = ({ showloginForm }) => {
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);

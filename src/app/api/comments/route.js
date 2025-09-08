@@ -9,7 +9,7 @@ export async function POST(req) {
     const reqBody = await req.json();
     const { username, body, email, score, productID } = reqBody;
 
-    // Validation (می‌توانید بعدا اضافه کنید)
+    // Validation 
 
     const comment = await CommentModel.create({
       username,

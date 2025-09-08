@@ -1,14 +1,14 @@
 import React from "react";
 import Navbar from "@/Components/modules/Navbar/Navbar";
 import Footer from "@/Components/modules/Footer/Footer";
-import { authUser } from "@/utils/auth";
+import { authUser } from "@/utils/Server/auth";
 
 const page = async () => {
-  // const user = await authUser();
+  const user = await authUser();
 
   return (
     <>
-      <Navbar  />
+      <Navbar isLogin={user} />
       <div className="max-w-[1222px] w-full mx-auto mb-16 px-4 text-right text-black">
         {/* بخش درباره ما */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-[110px] py-10 text-gray-700">
