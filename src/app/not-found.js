@@ -11,16 +11,16 @@ export default function NotFoundPage() {
 
       <h1 className="text-6xl font-bold mb-2 text-gray-800">404</h1>
 
-      <p className="text-xl text-gray-600 mb-6">
+      <p className="text-3xl md:text-2xl text-gray-600 mb-6">
         متأسفیم! صفحه‌ای که به دنبال آن بودید پیدا نشد.
       </p>
 
-      <Link
+      {/* <Link
         href="/"
         className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transform hover:scale-105 transition-all duration-300"
       >
         بازگشت به صفحه اصلی
-      </Link>
+      </Link> */}
     </div>
   );
 }
