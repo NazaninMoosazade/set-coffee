@@ -2,8 +2,12 @@ import { FaFacebookF, FaStar, FaTwitter } from "react-icons/fa";
 import { IoCheckmark } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { TbSwitch3 } from "react-icons/tb";
-import { FaTelegram, FaLinkedinIn, FaPinterest , FaRegStar } from "react-icons/fa";
-
+import {
+  FaTelegram,
+  FaLinkedinIn,
+  FaPinterest,
+  FaRegStar,
+} from "react-icons/fa";
 
 const Details = ({ product }) => {
   return (
@@ -16,16 +20,12 @@ const Details = ({ product }) => {
       {/* Rating */}
       <div className="flex gap-2 mt-6 items-center">
         <div className="flex gap-[2px] text-orange-500 text-lg lg:text-xl">
-          {
-            new Array(product.score).fill(0).map((item , index) =>  (
-              <FaStar key={index}/>
-            ))
-          }
-          {
-            new Array(5 -product.score).fill(0).map((item , index) =>  (
-              <FaRegStar key={index}/>
-            ))
-          }
+          {new Array(product.score).fill(0).map((item, index) => (
+            <FaStar key={index} />
+          ))}
+          {new Array(5 - product.score).fill(0).map((item, index) => (
+            <FaRegStar key={index} />
+          ))}
         </div>
         <p className="text-gray-600 text-xs lg:text-sm">
           (دیدگاه {product.comments.length} کاربر)
@@ -34,7 +34,8 @@ const Details = ({ product }) => {
 
       {/* Price */}
       <p className="text-[rgb(52,24,14)] text-xl lg:text-2xl font-bold my-4 lg:my-6">
-        {product.price.toLocaleString()} تومان
+        {product?.price != null ? product.price.toLocaleString("fa-IR") : ""}{" "}
+        تومان
       </p>
 
       {/* Description */}

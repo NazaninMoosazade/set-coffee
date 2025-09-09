@@ -16,6 +16,9 @@ const product = async ({params}) => {
   const productID = params.id
   const product = await ProductModel.findOne({_id : productID}).populate("comments");
 
+
+  const relatedProducts = await ProductModel.find(({smell : product.smell}))
+
   return (
     <div className="overflow-auto">
       {/* Navbar */}
@@ -46,7 +49,7 @@ const product = async ({params}) => {
 
         {/* More Products Section */}
         <div className="mt-12">
-          <MoreProducts />
+          <MoreProducts relatedProducts={relatedProducts}/>
         </div>
       </div>
 

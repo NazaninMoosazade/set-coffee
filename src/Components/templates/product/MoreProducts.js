@@ -1,13 +1,12 @@
 "use client";
+
 import Product from "@/Components/modules/Product/Product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 
-const MoreProducts = () => {
-  const products = Array(8).fill(null); // 8 محصول نمونه
-
+const MoreProducts = ({ relatedProducts }) => {
   return (
     <div data-aos="fade-right" className="mt-12">
       {/* Section Title */}
@@ -30,9 +29,9 @@ const MoreProducts = () => {
         modules={[Navigation]}
         className="mySwiper"
       >
-        {products.map((_, idx) => (
-          <SwiperSlide key={idx}>
-            <Product />
+        {relatedProducts.map((product) => (
+          <SwiperSlide key={product._id}>
+            <Product {...product} />
           </SwiperSlide>
         ))}
       </Swiper>
