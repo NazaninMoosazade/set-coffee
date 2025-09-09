@@ -1,6 +1,12 @@
+"use client"
+
 import { IoMdStar } from "react-icons/io";
 
 const CommentForm = () => {
+
+  
+
+
   return (
     <div className="w-full bg-white p-4 lg:p-6 rounded-lg shadow-sm">
       <p className="text-sm lg:text-base font-bold mb-2">دیدگاه خود را بنویسید</p>

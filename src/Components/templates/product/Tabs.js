@@ -4,13 +4,19 @@ import Description from "./Description";
 import MoreInfoes from "./MoreInfoes";
 import Comments from "./Comments";
 
-const Tabs = () => {
+const Tabs = ({ product }) => {
   const [tab, setTab] = useState("description");
 
   const tabs = [
     { id: "description", label: "توضیحات", component: <Description /> },
-    { id: "moreInfoes", label: "اطلاعات بیشتر", component: <MoreInfoes /> },
-    { id: "comments", label: "نظرات (7)", component: <Comments /> },
+    { id: "moreInfoes", label: "اطلاعات بیشتر", component: <MoreInfoes product={JSON.parse(JSON.stringify(product))}/> },
+    {
+      id: "comments",
+      label: ` ${product.comments.length} نظرات`,
+      component: (
+        <Comments comments={JSON.parse(JSON.stringify(product.comments))} />
+      ),
+    },
   ];
 
   return (

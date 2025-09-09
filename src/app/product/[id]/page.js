@@ -1,4 +1,3 @@
-
 import Gallery from "@/Components/templates/product/Gallery";
 import Details from "@/Components/templates/product/Details";
 import Tabs from "@/Components/templates/product/Tabs";
@@ -6,9 +5,16 @@ import MoreProducts from "@/Components/templates/product/MoreProducts";
 import Footer from "@/Components/modules/Footer/Footer";
 import Navbar from "@/Components/modules/Navbar/Navbar";
 import { authUser } from "@/utils/Server/auth";
+import ProductModel from '@/models/Product'
+import connectToDB from "@/configs/db";
 
-const product = async () => {
+const product = async ({params}) => {
+
+  connectToDB()
   const user = await authUser();
+
+  const productID = params.id
+  const product = await ProductModel.findOne({_id : productID}).populate("comments");
 
   return (
     <div className="overflow-auto">
@@ -24,7 +30,7 @@ const product = async () => {
         <div className="flex flex-col lg:flex-row-reverse gap-8">
           {/* Details */}
           <div className="w-full lg:w-2/3">
-            <Details />
+            <Details product={JSON.parse(JSON.stringify(product))} />
           </div>
 
           {/* Gallery */}
@@ -35,7 +41,7 @@ const product = async () => {
 
         {/* Tabs (Description, MoreInfo, Comments) */}
         <div className="mt-12">
-          <Tabs />
+          <Tabs product={JSON.parse(JSON.stringify(product))}/>
         </div>
 
         {/* More Products Section */}

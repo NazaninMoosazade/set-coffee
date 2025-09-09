@@ -2,41 +2,44 @@ import { FaFacebookF, FaStar, FaTwitter } from "react-icons/fa";
 import { IoCheckmark } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
 import { TbSwitch3 } from "react-icons/tb";
-import { FaTelegram, FaLinkedinIn, FaPinterest } from "react-icons/fa";
+import { FaTelegram, FaLinkedinIn, FaPinterest , FaRegStar } from "react-icons/fa";
 
 
-const Details = () => {
+const Details = ({ product }) => {
   return (
     <main className="w-full lg:w-[63%] px-4 lg:px-0">
-
-
       {/* Title */}
-      <h2 className="text-lg lg:text-xl font-bold leading-8 mt-4">
-        کپسول قهوه SETpresso سازگار با دستگاه نسپرسو ( GOLD ) ده -10- عددی
+      <h2 className="text-lg lg:text-3xl font-bold leading-8 mt-4">
+        {product.name}
       </h2>
 
       {/* Rating */}
       <div className="flex gap-2 mt-6 items-center">
         <div className="flex gap-[2px] text-orange-500 text-lg lg:text-xl">
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
-          <FaStar />
+          {
+            new Array(product.score).fill(0).map((item , index) =>  (
+              <FaStar key={index}/>
+            ))
+          }
+          {
+            new Array(5 -product.score).fill(0).map((item , index) =>  (
+              <FaRegStar key={index}/>
+            ))
+          }
         </div>
-        <p className="text-gray-600 text-xs lg:text-sm">(دیدگاه 7 کاربر)</p>
+        <p className="text-gray-600 text-xs lg:text-sm">
+          (دیدگاه {product.comments.length} کاربر)
+        </p>
       </div>
 
       {/* Price */}
       <p className="text-[rgb(52,24,14)] text-xl lg:text-2xl font-bold my-4 lg:my-6">
-        205,000 تومان
+        {product.price.toLocaleString()} تومان
       </p>
 
       {/* Description */}
       <span className="text-sm text-gray-500 block w-full lg:w-[93%] leading-6">
-        کپسول قهوه ست مدل Gold سازگار با دستگاههای کپسولی نسپرسو می باشد .
-        ترکیب این قهوه عربیکا بوده و با برشته کاری متوسط درجاتی از اسیدیته به
-        همراه تن واری متوسط , و برای ترکیب با شیر بسیار عالی می باشد.
+        {product.shortDescription}
       </span>
 
       <hr className="my-6" />
@@ -83,13 +86,11 @@ const Details = () => {
 
       {/* Product Details */}
       <div className="flex flex-col gap-3 mt-8 text-sm lg:text-base leading-6">
-        <strong>شناسه محصول: GOLD Nespresso Compatible capsule</strong>
-        <p>
-          <strong>دسته:</strong> Coffee Capsule, کپسول قهوه, همه موارد
-        </p>
-        <p>
-          <strong>برچسب:</strong> کپسول قهوه،کپسول قهوه ست پرسو،کپسول قهوه
-          ایرانی،کپسول قهوه نسپرسو ایرانی،قهوه ست ، Setpresso،Gold Setpresso
+        {/* <strong>شناسه محصول: {product._id}   </strong> */}
+
+        <p className="flex flex-col">
+          <strong>برچسب:</strong>
+          {product.tags.join(" , ")}
         </p>
       </div>
 
