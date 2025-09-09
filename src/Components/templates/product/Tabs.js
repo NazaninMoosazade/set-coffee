@@ -14,7 +14,7 @@ const Tabs = ({ product }) => {
       id: "comments",
       label: ` ${product.comments.length} نظرات`,
       component: (
-        <Comments comments={JSON.parse(JSON.stringify(product.comments))} />
+        <Comments productID={product._id} comments={JSON.parse(JSON.stringify(product.comments))} />
       ),
     },
   ];

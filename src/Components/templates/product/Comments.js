@@ -1,7 +1,7 @@
 import Comment from "@/Components/modules/Comment/Commnet";
 import CommentForm from "./CommentForm";
 
-const Comments = ({comments}) => {
+const Comments = ({productID , comments}) => {
 
   
   return (
@@ -29,7 +29,7 @@ const Comments = ({comments}) => {
 
         {/* Comment Form */}
         <div className="w-full lg:w-1/2 bg-gray-50 p-4 rounded-lg shadow-sm">
-          <CommentForm />
+          <CommentForm productID={productID}/>
         </div>
       </main>
     </div>
