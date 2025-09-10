@@ -49,7 +49,7 @@ const product = async ({params}) => {
 
         {/* More Products Section */}
         <div className="mt-12">
-          <MoreProducts relatedProducts={relatedProducts}/>
+          <MoreProducts relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}/>
         </div>
       </div>
 

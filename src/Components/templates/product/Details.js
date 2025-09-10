@@ -8,6 +8,7 @@ import {
   FaPinterest,
   FaRegStar,
 } from "react-icons/fa";
+import AddToWhishList from "./addToWhishList";
 
 const Details = ({ product }) => {
   return (
@@ -69,12 +70,7 @@ const Details = ({ product }) => {
 
       {/* Wishlist */}
       <section className="flex flex-col sm:flex-row gap-4 lg:gap-5 mb-8">
-        <div className="flex items-center gap-1 text-gray-700 hover:text-gray-500 transition">
-          <CiHeart className="text-base lg:text-lg" />
-          <a href="/" className="text-xs lg:text-sm">
-            افزودن به علاقه مندی ها
-          </a>
-        </div>
+        <AddToWhishList />
         <div className="flex items-center gap-1 text-gray-700 hover:text-gray-500 transition">
           <TbSwitch3 className="text-base lg:text-lg" />
           <a href="/" className="text-xs lg:text-sm">
