@@ -27,8 +27,8 @@ export default function Navbar({isLogin}) {
   return (
     <nav
       className={`${
-        fixTop ? "fixed top-0 left-0 z-50" : "relative"
-      } hidden md:flex w-full h-20 shadow-lg bg-white`}
+    fixTop ? "fixed top-0 left-0 z-[9999]" : "relative z-[9999]"
+  } hidden md:flex w-full h-20 shadow-lg bg-white`}
     >
       <main className="container mx-auto h-full flex items-center justify-between px-4">
         {/* Logo */}
