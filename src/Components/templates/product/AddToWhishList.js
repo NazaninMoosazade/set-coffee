@@ -1,12 +1,19 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CiHeart } from "react-icons/ci";
 
 const AddToWhishList = () => {
 
-  const handleAddToWhishList = (e) => {
-    e.preventDefault(); // جلوگیری از رفرش شدن صفحه
+  useEffect(() => {
+    const authUser = async () => {
+     const res = await fetch('/api/auth/me')
+    }
+    authUser()
+  } ,[])
+
+  const handleAddToWhishList = (event) => {
+    event.preventDefault(); 
     console.log('AddToWhishList');
   }
 
