@@ -1,6 +1,6 @@
 import connectToDB from "@/configs/db";
 // import WishlistModel from "@/models/Wishlist";
-import WishlistModel from '@/models/Wishlist'
+import WishlistModel from "@/models/Wishlist";
 
 export async function POST(req) {
   try {
@@ -8,9 +8,13 @@ export async function POST(req) {
     const body = await req.json();
     const { user, product } = body;
 
-    // Validation (You)
+    const wish = await WishlistModel.findOne({ user, product });
 
-    await WishlistModel.create({ user, product });
+    if(!wish) {
+       await WishlistModel.create({ user, product });
+    }
+
+   
 
     return Response.json(
       { message: "Product added to wishlist successfully :))" },

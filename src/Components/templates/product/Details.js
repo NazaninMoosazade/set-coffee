@@ -70,7 +70,7 @@ const Details = ({ product }) => {
 
       {/* Wishlist */}
       <section className="flex flex-col sm:flex-row gap-4 lg:gap-5 mb-8">
-        <AddToWhishList />
+        <AddToWhishList productID={product._id}/>
         <div className="flex items-center gap-1 text-gray-700 hover:text-gray-500 transition">
           <TbSwitch3 className="text-base lg:text-lg" />
           <a href="/" className="text-xs lg:text-sm">

@@ -56,7 +56,7 @@ export default function Navbar({isLogin}) {
             <Link href={"/about-us"}>درباره ما</Link>
           </li>
           <li>
-            <Link href={"/roles"}>قوانین</Link>
+            <Link href={"/rules"}>قوانین</Link>
           </li>
 
           {isLogin ? (
