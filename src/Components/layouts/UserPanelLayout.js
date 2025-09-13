@@ -9,7 +9,6 @@ const UserPanelLayout = ({ children }) => {
 
   return (
     <div className="bg-white w-full min-h-screen text-black flex flex-col md:flex-row direction-rtl">
-      
       {/* Sidebar دسکتاپ */}
       <div className="hidden md:flex w-64">
         <Sidebar />
