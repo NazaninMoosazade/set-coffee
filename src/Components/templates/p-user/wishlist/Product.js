@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { IoMdStar } from "react-icons/io";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import swal from "sweetalert";
 
 const Product = ({ price, score = 0, name }) => {
@@ -36,7 +36,11 @@ const Product = ({ price, score = 0, name }) => {
         <div className="flex gap-1">
           {score > 0 &&
             new Array(score).fill(0).map((_, index) => (
-              <IoMdStar key={index} className="text-orange-500 text-lg mt-1" />
+              <FaStar key={index} className="text-orange-500 text-lg mt-1" />
+            ))}
+                   {score > 0 &&
+            new Array(5 - score).fill(0).map((_, index) => (
+              <FaRegStar key={index} className="text-orange-500 text-lg mt-1" />
             ))}
         </div>
         <span className="text-sm">
