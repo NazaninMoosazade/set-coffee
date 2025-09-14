@@ -10,17 +10,33 @@ import swal from "sweetalert";
 
 const Sidebar = () => {
   const path = usePathname();
-
   const logoutHandler = () => {
     swal({
       title: "آیا از خروج اطمینان دارید؟",
       icon: "warning",
       buttons: ["نه", "آره"],
+    }).then(async (result) => {
+
+      if (result) {
+        const res = await fetch('/api/auth/signout' , {
+          method : 'POST',
+        })
+        if(res.status === 200) {
+          swal({
+            title: 'با موفقیت از اکانت خارج شدید',
+            icon: 'success',
+            buttons: 'فهمیدم'
+          }).then((result) => {
+            location.replace('/')
+          })
+        }
+      }
     });
   };
-
   const linkClass = (active) =>
-    `flex items-center gap-3 text-[18px] ${active ? "opacity-100" : "opacity-70"}`;
+    `flex items-center gap-3 text-[18px] ${
+      active ? "opacity-100" : "opacity-70"
+    }`;
 
   return (
     <aside className="bg-[#711d1c] w-full flex flex-col h-full text-white">
@@ -33,21 +49,45 @@ const Sidebar = () => {
       <ul className="flex flex-col gap-6 py-7 flex-1 md:pr-5">
         {path.includes("/p-user") ? (
           <>
-            <Link href={"/p-user"} className={linkClass(true)}><ImReply /> پیشخوان</Link>
-            <Link href={"/p-user/orders"} className={linkClass(false)}><FaShoppingBag /> سفارش ها</Link>
-            <Link href={"/p-user/tickets"} className={linkClass(false)}><MdSms /> تیکت ها</Link>
-            <Link href={"/p-user/comments"} className={linkClass(false)}><FaComments /> کامنت ها</Link>
-            <Link href={"/p-user/wishlist"} className={linkClass(false)}><FaHeart /> علاقه مندی</Link>
-            <Link href={"/p-user/account-details"} className={linkClass(false)}><TbListDetails /> جزئیات اکانت</Link>
+            <Link href={"/p-user"} className={linkClass(true)}>
+              <ImReply /> پیشخوان
+            </Link>
+            <Link href={"/p-user/orders"} className={linkClass(false)}>
+              <FaShoppingBag /> سفارش ها
+            </Link>
+            <Link href={"/p-user/tickets"} className={linkClass(false)}>
+              <MdSms /> تیکت ها
+            </Link>
+            <Link href={"/p-user/comments"} className={linkClass(false)}>
+              <FaComments /> کامنت ها
+            </Link>
+            <Link href={"/p-user/wishlist"} className={linkClass(false)}>
+              <FaHeart /> علاقه مندی
+            </Link>
+            <Link href={"/p-user/account-details"} className={linkClass(false)}>
+              <TbListDetails /> جزئیات اکانت
+            </Link>
           </>
         ) : (
           <>
-            <Link href={"/p-admin"} className={linkClass(true)}><ImReply /> پیشخوان</Link>
-            <Link href={"/p-admin/products"} className={linkClass(false)}><FaShoppingBag /> محصولات</Link>
-            <Link href={"/p-admin/users"} className={linkClass(false)}><FaUsers /> کاربران</Link>
-            <Link href={"/p-admin/comments"} className={linkClass(false)}><FaComments /> کامنت ها</Link>
-            <Link href={"/p-admin/tickets"} className={linkClass(false)}><MdSms /> تیکت ها</Link>
-            <Link href={"/p-admin/discount"} className={linkClass(false)}><MdOutlineAttachMoney /> تخفیفات</Link>
+            <Link href={"/p-admin"} className={linkClass(true)}>
+              <ImReply /> پیشخوان
+            </Link>
+            <Link href={"/p-admin/products"} className={linkClass(false)}>
+              <FaShoppingBag /> محصولات
+            </Link>
+            <Link href={"/p-admin/users"} className={linkClass(false)}>
+              <FaUsers /> کاربران
+            </Link>
+            <Link href={"/p-admin/comments"} className={linkClass(false)}>
+              <FaComments /> کامنت ها
+            </Link>
+            <Link href={"/p-admin/tickets"} className={linkClass(false)}>
+              <MdSms /> تیکت ها
+            </Link>
+            <Link href={"/p-admin/discount"} className={linkClass(false)}>
+              <MdOutlineAttachMoney /> تخفیفات
+            </Link>
           </>
         )}
       </ul>

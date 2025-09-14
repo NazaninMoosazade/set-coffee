@@ -8,7 +8,7 @@ import {
   FaPinterest,
   FaRegStar,
 } from "react-icons/fa";
-import AddToWhishList from "./addToWhishList";
+import AddToWhishList from "./AddToWhishList";
 
 const Details = ({ product }) => {
   return (

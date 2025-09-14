@@ -27,7 +27,7 @@ const page = async () => {
           {wishlist.length > 0 &&
             wishlist.map((wish) =>
               wish.product ? (
-                <Product key={wish._id} {...wish.product} />
+                <Product key={wish._id} productID={String(wish.product._id)} {...wish.product} />
               ) : null
             )}
         </div>

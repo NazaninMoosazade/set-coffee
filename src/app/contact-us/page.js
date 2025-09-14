@@ -4,7 +4,7 @@ import Navbar from "@/Components/modules/Navbar/Navbar";
 import { authUser } from "@/utils/Server/auth";
 import Information from "@/Components/templates/contact-us/Information";
 import Form from "@/Components/templates/contact-us/Form";
-import Map from "@/Components/templates/contact-us/map";
+// import Map from "@/Components/templates/contact-us/Map";
 import Link from "next/link";
 
 function page() {
@@ -18,7 +18,7 @@ function page() {
         <main className="z-0 flex flex-col md:flex-row gap-9 mt-12">
           {/* اولین نقشه */}
           <section className="w-full md:w-1/2 relative">
-            <Map
+            {/* <Map
               position={[35.72021225108499, 51.42222691580869]}
               center={[35.72021225108499, 51.42222691580869]}
             >
@@ -37,12 +37,12 @@ function page() {
                   درباره فروشگاه
                 </Link>
               </div> */}
-            </Map>
+            {/* </Map> */} 
           </section>
 
           {/* دومین نقشه */}
           <section className="w-full md:w-1/2 relative">
-            <Map
+            {/* <Map
               position={[35.70153474690238, 51.41497422314844]}
               center={[35.70153474690238, 51.41497422314844]}
             >
@@ -60,7 +60,7 @@ function page() {
                   درباره فروشگاه
                 </Link>
               </div> */}
-            </Map>
+            {/* </Map> */} 
           </section>
         </main>
       </div>
