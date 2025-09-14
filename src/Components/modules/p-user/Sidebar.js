@@ -64,9 +64,9 @@ const Sidebar = () => {
             <Link href={"/p-user/wishlist"} className={linkClass(false)}>
               <FaHeart /> علاقه مندی
             </Link>
-            <Link href={"/p-user/account-details"} className={linkClass(false)}>
+            {/* <Link href={"/p-user/account-details"} className={linkClass(false)}>
               <TbListDetails /> جزئیات اکانت
-            </Link>
+            </Link> */}
           </>
         ) : (
           <>
