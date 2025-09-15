@@ -6,8 +6,10 @@ import Sms from "../Sms";
 import { showSwal } from "@/utils/helper";
 // import { valiadteEmail, valiadtePassword } from "@/utils/auth";
 import { valiadteEmail , valiadtePassword } from "@/utils/global/auth";
+import { useRouter } from "next/navigation";
 
 const Login = ({ showRegisterForm }) => {
+  const router = useRouter()
   const [isLoginWithOtp, setIsLoginWithOtp] = useState(false);
 
   const [password, setPassword] = useState("");
@@ -54,6 +56,7 @@ const Login = ({ showRegisterForm }) => {
 
     if (res.status === 200) {
       showSwal(" با موفقیت لاگین شدید", "success", "ورود به پنل کاربری");
+      router.replace('p-user')
     } else if (res.status === 422 || res.status === 410) {
       showSwal("کاربری با این اطلاعات یافت نشد", "error", "تلاش مجدد");
     } else if (res.status === 419) {
