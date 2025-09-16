@@ -1,40 +1,39 @@
 'use client'
 
 import React, { useState } from "react";
-// import Sidebar from "@/components/modules/p-admin/Sidebar";
-// import Topbar from "@/components/modules/p-admin/Topbor";
-// import { Menu } from "lucide-react";
+import Sidebar from "@/Components/modules/p-admin/Sidebar";
+import Topbar from "@/Components/modules/p-admin/Topbar";
+import { FiMenu } from "react-icons/fi";
 
 const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-white w-full h-screen text-black flex flex-col">
-      {/* Topbar همیشه بالاست */}
-      <div className="w-full shadow-md">
-        <div className="flex items-center justify-between px-4 py-3 md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)}>
-            {/* <Menu className="w-6 h-6" /> */}
-          </button>
-          <span className="font-bold">پنل مدیریت</span>
-        </div>
-        {/* <Topbar className="hidden md:block" /> */}
-      </div>
+    <div className="flex flex-col w-full h-screen bg-white text-black">
+      {/* Topbar */}
+      <Topbar setIsOpen={setIsOpen} />
 
-      {/* بخش اصلی */}
-      <section className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <div
           className={`fixed inset-y-0 right-0 z-40 w-64 bg-gray-100 transform transition-transform duration-300 md:static md:translate-x-0 ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          {/* <Sidebar /> */}
+          <Sidebar closeSidebar={() => setIsOpen(false)} />
         </div>
 
-        {/* محتوا */}
-        <div className="flex-1 overflow-y-auto p-4">{children}</div>
-      </section>
+        {/* Overlay موبایل */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-30 md:hidden"
+            onClick={() => setIsOpen(false)}
+          ></div>
+        )}
+
+        {/* Main content */}
+        <main className="flex-1 overflow-y-auto p-4">{children}</main>
+      </div>
     </div>
   );
 };
