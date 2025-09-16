@@ -29,7 +29,7 @@ const Page = async () => {
         <section className="flex flex-wrap gap-5 mt-12 px-10">
           <Box title="مجموع تیکت ها" value={allTickets.length} />
           <Box title="مجموع کامنت ها" value={comments.length} />
-          <Box title="مجموع سفارشات" value="0" /> {/* اینو بعدا وصل کن به مدل سفارش */}
+          <Box title="مجموع سفارشات" value="0" /> 
           <Box title="مجموع علاقه‌مندی ها" value={wishes.length} />
         </section>
 
