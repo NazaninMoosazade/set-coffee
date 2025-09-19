@@ -1,6 +1,8 @@
 import React from "react";
 import AdminPanelLayout from "@/Components/layouts/AdminPanelLayout";
 import Box from "@/Components/templates/p-user/index/Box";
+import SaleChartWrapper from "@/Components/templates/p-admin/index/SaleChartWrapper";
+import GrowthChartWrapper from "@/Components/templates/p-admin/index/GrowthChartWrapper";
 
 import TicketModel from "@/models/Ticket";
 import CommentModel from "@/models/Comment";
@@ -9,7 +11,7 @@ import ProductModel from "@/models/Product";
 import connectToDB from "@/configs/db";
 
 async function AdminHomePage() {
-  connectToDB();
+  await connectToDB();
   const tickets = await TicketModel.find({}).lean();
   const users = await UserModel.find({}).lean();
   const products = await ProductModel.find({}).lean();
@@ -29,9 +31,11 @@ async function AdminHomePage() {
         <div className="flex flex-col md:flex-row gap-3 px-11 mt-8">
           <section className="bg-[#711d1c0f] p-5 rounded text-right w-full md:w-1/2">
             <p className="mb-2 font-medium">آمار فروش</p>
+            {/* <SaleChartWrapper data={tickets} /> */}
           </section>
           <section className="bg-[#711d1c0f] p-5 rounded text-right w-full md:w-1/2">
             <p className="mb-2 font-medium">نرخ رشد</p>
+            {/* <GrowthChartWrapper data={users} /> */}
           </section>
         </div>
       </main>
