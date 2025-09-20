@@ -2,12 +2,44 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { showSwal } from "@/utils/helper";
+import swal from "sweetalert";
 
 export default function DataTable({ tickets, title }) {
   const router = useRouter();
 
   const showTicketBody = (body) => {
     showSwal(body, undefined, "بستن");
+  };
+
+  const answerToTicket = async (ticket) => {
+    swal({
+      title: "لطفا پاسخ مورد نظر را وارد کنید:",
+      content: "input",
+      buttons: "ثبت پاسخ",
+    }).then(async (answerText) => {
+      if (answerText) {
+        const answer = {
+          ...ticket,
+          body: answerText,
+          ticketID: ticket._id,
+        };
+
+        const res = await fetch("/api/tickets/answer", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(answer),
+        });
+        if (res.status === 201) {
+          swal({
+            title: "پاسخ مورد نظر ثبت شد",
+            icon: "success",
+            buttons: "فهمیدم",
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -39,9 +71,15 @@ export default function DataTable({ tickets, title }) {
             {tickets.map((ticket, index) => (
               <tr key={ticket._id} className="bg-white hover:bg-gray-50">
                 <td className="p-1 sm:p-2 text-sm sm:text-base">{index + 1}</td>
-                <td className="p-1 sm:p-2 text-sm sm:text-base">{ticket.user.name}</td>
-                <td className="p-1 sm:p-2 text-sm sm:text-base">{ticket.title}</td>
-                <td className="p-1 sm:p-2 text-sm sm:text-base">{ticket.department.title}</td>
+                <td className="p-1 sm:p-2 text-sm sm:text-base">
+                  {ticket.user.name}
+                </td>
+                <td className="p-1 sm:p-2 text-sm sm:text-base">
+                  {ticket.title}
+                </td>
+                <td className="p-1 sm:p-2 text-sm sm:text-base">
+                  {ticket.department.title}
+                </td>
                 <td className="p-1 sm:p-2">
                   <button
                     className="bg-black text-white text-xs sm:text-sm py-1 sm:py-1.5 px-2 sm:px-3 rounded w-full hover:bg-gray-800 transition"
@@ -56,7 +94,10 @@ export default function DataTable({ tickets, title }) {
                   </button>
                 </td>
                 <td className="p-1 sm:p-2">
-                  <button className="bg-[#711d1c] text-white text-xs sm:text-sm py-1 sm:py-1.5 px-2 sm:px-3 rounded w-full hover:bg-red-700 transition">
+                  <button
+                    onClick={() => answerToTicket(ticket)}
+                    className="bg-[#711d1c] text-white text-xs sm:text-sm py-1 sm:py-1.5 px-2 sm:px-3 rounded w-full hover:bg-red-700 transition"
+                  >
                     پاسخ
                   </button>
                 </td>
