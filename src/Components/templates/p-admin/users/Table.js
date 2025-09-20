@@ -1,20 +1,71 @@
 "use client";
 
-import React from "react";
-
+import React, { useState } from "react";
+import swal from "sweetalert";
 
 export default function DataTable({ users, title }) {
+  const [userList, setUserList] = useState(users);
+
   const changeRole = async (userID) => {
     const res = await fetch("/api/user/role", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({id : userID})
+      body: JSON.stringify({ id: userID }),
     });
 
-    console.log(res);
-    
+    if (res.status === 200) {
+      setUserList((prev) =>
+        prev.map((user) =>
+          user._id === userID
+            ? { ...user, role: user.role === "USER" ? "ADMIN" : "USER" }
+            : user
+        )
+      );
+
+      swal({
+        title: "نقش کاربر با موفقیت عوض شد",
+        icon: "success",
+        buttons: "ok",
+      });
+    }
+  };
+
+  const deleteUser = async (userID) => {
+    swal({
+      title: "آیا مطمئن هستید؟",
+      text: "این کاربر برای همیشه حذف خواهد شد!",
+      icon: "warning",
+      buttons: ["لغو", "بله، حذف شود"],
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        const res = await fetch("/api/user/role", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: userID }),
+        });
+
+        if (res.status === 200) {
+          setUserList((prev) => prev.filter((user) => user._id !== userID));
+
+          swal({
+            title: "کاربر با موفقیت حذف شد",
+            icon: "success",
+            buttons: "ok",
+          });
+        } else {
+          swal({
+            title: "خطا در حذف کاربر",
+            icon: "error",
+            buttons: "باشه",
+          });
+        }
+      }
+    });
   };
 
   return (
@@ -39,11 +90,11 @@ export default function DataTable({ users, title }) {
               <th className="p-2 text-center">ویرایش</th>
               <th className="p-2 text-center">تغییر سطح</th>
               <th className="p-2 text-center">حذف</th>
-              <th className="p-2 text-center">بن</th>
+              {/* <th className="p-2 text-center">بن</th> */}
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {userList.map((user, index) => (
               <tr key={user._id} className="bg-white text-center align-middle">
                 <td className="p-2">{index + 1}</td>
                 <td className="p-2">{user.name}</td>
@@ -72,20 +123,21 @@ export default function DataTable({ users, title }) {
                 </td>
                 <td className="p-2">
                   <button
+                    onClick={() => deleteUser(user._id)}
                     type="button"
                     className="w-full rounded bg-[#711d1c] px-3 py-1 text-sm text-white hover:opacity-80"
                   >
                     حذف
                   </button>
                 </td>
-                <td className="p-2">
+                {/* <td className="p-2">
                   <button
                     type="button"
                     className="w-full rounded bg-[#711d1c] px-3 py-1 text-sm text-white hover:opacity-80"
                   >
                     بن
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
