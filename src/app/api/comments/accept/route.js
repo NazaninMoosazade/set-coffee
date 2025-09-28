@@ -3,21 +3,20 @@ import CommentModel from "@/models/Comment";
 
 export async function PUT(req) {
   try {
-    connectToDB();
-    const body = await req.json();
-    const { id } = body;
+    await connectToDB(); // حتما await
+    const { id } = await req.json();
 
+    // تایید کامنت در دیتابیس
+    await CommentModel.findByIdAndUpdate(id, { isAccept: true });
 
-    await CommentModel.findOneAndUpdate(
-      { _id: id },
-      {
-        $set: {
-          isAccept: true,
-        },
-      }
+    return new Response(
+      JSON.stringify({ message: "Comment accepted successfully" }),
+      { status: 200 }
     );
-    return Response.json({ message: "Comment accepted successfully :))" });
   } catch (err) {
-    return Response.json({ message: err }, { status: 500 });
+    return new Response(
+      JSON.stringify({ message: err.message }),
+      { status: 500 }
+    );
   }
 }

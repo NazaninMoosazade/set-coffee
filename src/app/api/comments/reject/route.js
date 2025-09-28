@@ -3,21 +3,13 @@ import CommentModel from "@/models/Comment";
 
 export async function PUT(req) {
   try {
-    connectToDB();
-    const body = await req.json();
-    const { id } = body;
-    
+    await connectToDB();
+    const { id } = await req.json();
 
-    await CommentModel.findOneAndUpdate(
-      { _id: id },
-      {
-        $set: {
-          isAccept: false,
-        },
-      }
-    );
-    return Response.json({ message: "Comment accepted successfully :))" });
+    await CommentModel.findByIdAndDelete(id); // حذف واقعی از دیتابیس
+
+    return new Response(JSON.stringify({ message: "Comment deleted successfully" }), { status: 200 });
   } catch (err) {
-    return Response.json({ message: err }, { status: 500 });
+    return new Response(JSON.stringify({ message: err.message }), { status: 500 });
   }
 }

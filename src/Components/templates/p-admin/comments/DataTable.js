@@ -1,10 +1,10 @@
 "use client";
-import React from "react";
-import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { showSwal } from "@/utils/helper";
+import swal from "sweetalert";
 
-export default function DataTable({ comments, title }) {
-  const router = useRouter();
+export default function DataTable({ comments: initialComments, title }) {
+  const [comments, setComments] = useState(initialComments);
 
   const showCommentBody = (body) => {
     showSwal(body, undefined, "خوندم");
@@ -13,44 +13,33 @@ export default function DataTable({ comments, title }) {
   const rejectComment = async (commentID) => {
     const res = await fetch("/api/comments/reject", {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: commentID }),
     });
+
     if (res.status === 200) {
-      swal({
-        title: "کامنت مورد نظر با موفقیت حذف شد",
-        icon: "success",
-        buttons: "فهمیدم",
-      }).then(() => {
-        router.refresh();
-      });
+      swal("کامنت مورد نظر با موفقیت رد شد", "", "success");
+      setComments(prev => prev.filter(c => c._id !== commentID));
     }
   };
 
   const acceptComment = async (commentID) => {
     const res = await fetch("/api/comments/accept", {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: commentID }),
     });
+
     if (res.status === 200) {
-      swal({
-        title: "کامنت مورد نظر با موفقیت تایید شد",
-        icon: "success",
-        buttons: "فهمیدم",
-      }).then(() => {
-        router.refresh();
-      });
+      swal("کامنت مورد نظر با موفقیت تایید شد", "", "success");
+      setComments(prev =>
+        prev.map(c => c._id === commentID ? { ...c, isAccept: true } : c)
+      );
     }
   };
 
   return (
     <div className="px-4 md:px-8">
-      {/* عنوان */}
       <div className="relative mt-8">
         <h1 className="relative z-10 text-2xl md:text-3xl font-medium text-right uppercase inline-block bg-white pr-6">
           {title}
@@ -58,7 +47,6 @@ export default function DataTable({ comments, title }) {
         <div className="absolute top-1/2 left-0 right-0 border-b border-[#711d1c] shadow-sm"></div>
       </div>
 
-      {/* جدول */}
       <div className="overflow-x-auto mt-8">
         <table className="w-full border-collapse bg-[#f2f7fd] rounded-lg shadow-sm">
           <thead>
@@ -79,21 +67,17 @@ export default function DataTable({ comments, title }) {
           </thead>
           <tbody>
             {comments.map((comment, index) => (
-              <tr
-                key={comment._id}
-                className="bg-white even:bg-gray-50 text-sm md:text-base"
-              >
-                <td className={`${comment.isAccept ? 'p-3 text-center bg-emerald-600' : 'p-3 text-center bg-red-600'}`}>{index + 1}</td>
+              <tr key={comment._id} className="bg-white even:bg-gray-50 text-sm md:text-base">
+                <td className={`p-3 text-center ${comment.isAccept ? 'bg-emerald-600' : 'bg-red-600'}`}>
+                  {index + 1}
+                </td>
                 <td className="p-3 text-center">{comment.username}</td>
                 <td className="p-3 text-center">{comment.email}</td>
                 <td className="p-3 text-center">{comment.score}</td>
                 <td className="p-3 text-center">{comment.productID.name}</td>
-                <td className="p-3 text-center">
-                  {new Date(comment.date).toLocaleDateString("fa-IR")}
-                </td>
+                <td className="p-3 text-center">{new Date(comment.date).toLocaleDateString("fa-IR")}</td>
                 <td className="p-2">
                   <button
-                    type="button"
                     className="w-full rounded bg-black text-white px-3 py-1 text-xs md:text-sm hover:bg-gray-800 transition"
                     onClick={() => showCommentBody(comment.body)}
                   >
@@ -101,17 +85,14 @@ export default function DataTable({ comments, title }) {
                   </button>
                 </td>
                 <td className="p-2">
-                  <button
-                    type="button"
-                    className="w-full rounded bg-black text-white px-3 py-1 text-xs md:text-sm hover:bg-gray-800 transition"
-                  >
+                  <button className="w-full rounded bg-black text-white px-3 py-1 text-xs md:text-sm hover:bg-gray-800 transition">
                     ویرایش
                   </button>
                 </td>
                 <td className="p-2">
                   <button
-                    type="button"
                     className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
+                    onClick={() => rejectComment(comment._id)}
                   >
                     حذف
                   </button>
@@ -120,7 +101,6 @@ export default function DataTable({ comments, title }) {
                   {comment.isAccept ? (
                     <button
                       onClick={() => rejectComment(comment._id)}
-                      type="button"
                       className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
                     >
                       رد
@@ -128,27 +108,19 @@ export default function DataTable({ comments, title }) {
                   ) : (
                     <button
                       onClick={() => acceptComment(comment._id)}
-                      type="button"
                       className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
                     >
-                      {" "}
-                      تایید{" "}
+                      تایید
                     </button>
                   )}
                 </td>
                 <td className="p-2">
-                  <button
-                    type="button"
-                    className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
-                  >
+                  <button className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition">
                     پاسخ
                   </button>
                 </td>
                 <td className="p-2">
-                  <button
-                    type="button"
-                    className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
-                  >
+                  <button className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition">
                     بن
                   </button>
                 </td>
