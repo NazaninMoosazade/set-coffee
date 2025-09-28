@@ -57,7 +57,7 @@ export default function Sidebar({ closeSidebar }) {
           تیکت ها
         </Link>
         <Link
-          href="/p-admin/discount"
+          href="/p-admin/discounts"
           className={linkClasses}
           onClick={closeSidebar}
         >
