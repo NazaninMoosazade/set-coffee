@@ -10,6 +10,44 @@ export default function DataTable({ comments, title }) {
     showSwal(body, undefined, "خوندم");
   };
 
+  const rejectComment = async (commentID) => {
+    const res = await fetch("/api/comments/reject", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: commentID }),
+    });
+    if (res.status === 200) {
+      swal({
+        title: "کامنت مورد نظر با موفقیت حذف شد",
+        icon: "success",
+        buttons: "فهمیدم",
+      }).then(() => {
+        router.refresh();
+      });
+    }
+  };
+
+  const acceptComment = async (commentID) => {
+    const res = await fetch("/api/comments/accept", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: commentID }),
+    });
+    if (res.status === 200) {
+      swal({
+        title: "کامنت مورد نظر با موفقیت تایید شد",
+        icon: "success",
+        buttons: "فهمیدم",
+      }).then(() => {
+        router.refresh();
+      });
+    }
+  };
+
   return (
     <div className="px-4 md:px-8">
       {/* عنوان */}
@@ -34,7 +72,7 @@ export default function DataTable({ comments, title }) {
               <th className="p-3 text-center">مشاهده</th>
               <th className="p-3 text-center">ویرایش</th>
               <th className="p-3 text-center">حذف</th>
-              <th className="p-3 text-center">تایید</th>
+              <th className="p-3 text-center">رد / تایید</th>
               <th className="p-3 text-center">پاسخ</th>
               <th className="p-3 text-center">بن</th>
             </tr>
@@ -45,7 +83,7 @@ export default function DataTable({ comments, title }) {
                 key={comment._id}
                 className="bg-white even:bg-gray-50 text-sm md:text-base"
               >
-                <td className="p-3 text-center">{index + 1}</td>
+                <td className={`${comment.isAccept ? 'p-3 text-center bg-emerald-600' : 'p-3 text-center bg-red-600'}`}>{index + 1}</td>
                 <td className="p-3 text-center">{comment.username}</td>
                 <td className="p-3 text-center">{comment.email}</td>
                 <td className="p-3 text-center">{comment.score}</td>
@@ -79,12 +117,24 @@ export default function DataTable({ comments, title }) {
                   </button>
                 </td>
                 <td className="p-2">
-                  <button
-                    type="button"
-                    className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
-                  >
-                    تایید
-                  </button>
+                  {comment.isAccept ? (
+                    <button
+                      onClick={() => rejectComment(comment._id)}
+                      type="button"
+                      className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
+                    >
+                      رد
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => acceptComment(comment._id)}
+                      type="button"
+                      className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
+                    >
+                      {" "}
+                      تایید{" "}
+                    </button>
+                  )}
                 </td>
                 <td className="p-2">
                   <button
