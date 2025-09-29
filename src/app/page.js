@@ -5,7 +5,6 @@ import Banner from "@/Components/templates/index/banner/Banner";
 import Latest from "@/Components/templates/index/latest/latest";
 import Promote from "@/Components/templates/index/promote/Promote";
 import Footer from "@/Components/modules/Footer/Footer";
-// import { authUser } from "@/utils/auth";
 import { authUser } from "@/utils/Server/auth";
 
 export default async function page() {
@@ -14,8 +13,8 @@ export default async function page() {
   return (
     <>
       <Navbar isLogin={user}/>
-      <Banner />
-      <Latest />
+      <Banner /> 
+       <Latest /> 
       <Promote />
       <Articles />
       <Footer />

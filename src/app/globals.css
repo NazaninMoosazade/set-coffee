@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,8 +24,6 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-  /* color: white; */
-  /* background: rgba(0, 0, 0, 0.3); */
   padding: 0.5rem;
   border-radius: 50%;
   width: 2.5rem;
@@ -40,5 +44,3 @@
 .swiper-button-prev::after {
   font-size: 1.2rem;
 }
-
-
