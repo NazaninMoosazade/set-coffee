@@ -1,3 +1,5 @@
+"use client";
+
 import { FaFacebookF, FaStar, FaTwitter } from "react-icons/fa";
 import { IoCheckmark } from "react-icons/io5";
 import { CiHeart } from "react-icons/ci";
@@ -9,8 +11,54 @@ import {
   FaRegStar,
 } from "react-icons/fa";
 import AddToWhishList from "./AddToWhishList";
+import { showSwal } from "@/utils/helper";
+import { useState } from "react";
 
 const Details = ({ product }) => {
+  const [count, setCount] = useState(1);
+
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length) {
+      const isInCart = cart.some((item) => item.id === product._id);
+
+      if (isInCart) {
+        cart.forEach((item) => {
+          if (item.id === product._id) {
+            item.count = item.count + count;
+          }
+        });
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showSwal("محصول با موفقیت به سبد خرید اضافه شد", "success", "فهمیدم");
+      } else {
+        const cartItem = {
+          id: product._id,
+          name: product.name,
+          price: product.price,
+          count,
+        };
+
+        cart.push(cartItem);
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showSwal("محصول با موفقیت به سبد خرید اضافه شد", "success", "فهمیدم");
+      }
+    } else {
+      const cartItem = {
+        id: product._id,
+        name: product.name,
+        price: product.price,
+        count,
+      };
+
+      cart.push(cartItem);
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      showSwal("محصول با موفقیت به سبد خرید اضافه شد", "success", "فهمیدم");
+    }
+  };
+
   return (
     <main className="w-full lg:w-[63%] px-4 lg:px-0">
       {/* Title */}
@@ -19,19 +67,22 @@ const Details = ({ product }) => {
       </h2>
 
       {/* Rating */}
-      <div className="flex gap-2 mt-6 items-center">
-        <div className="flex gap-[2px] text-orange-500 text-lg lg:text-xl">
-          {new Array(product.score).fill(0).map((item, index) => (
-            <FaStar key={index} />
-          ))}
-          {new Array(5 - product.score).fill(0).map((item, index) => (
-            <FaRegStar key={index} />
-          ))}
+      {/* Rating */}
+      {typeof window !== "undefined" && (
+        <div className="flex gap-2 mt-6 items-center">
+          <div className="flex gap-[2px] text-orange-500 text-lg lg:text-xl">
+            {new Array(product.score).fill(0).map((item, index) => (
+              <FaStar key={index} />
+            ))}
+            {new Array(5 - product.score).fill(0).map((item, index) => (
+              <FaRegStar key={index} />
+            ))}
+          </div>
+          <p className="text-gray-600 text-xs lg:text-sm">
+            (دیدگاه {product.comments.length} کاربر)
+          </p>
         </div>
-        <p className="text-gray-600 text-xs lg:text-sm">
-          (دیدگاه {product.comments.length} کاربر)
-        </p>
-      </div>
+      )}
 
       {/* Price */}
       <p className="text-[rgb(52,24,14)] text-xl lg:text-2xl font-bold my-4 lg:my-6">
@@ -54,15 +105,24 @@ const Details = ({ product }) => {
 
       {/* Cart Section */}
       <div className="flex flex-row-reverse items-center justify-end gap-3 text-center mb-6">
-        <button className="bg-teal-600 hover:bg-[rgb(113,29,28)] text-white px-4 lg:px-5 py-2.5 lg:py-3 transition rounded-md text-sm lg:text-base">
+        <button
+          onClick={addToCart}
+          className="bg-teal-600 hover:bg-[rgb(113,29,28)] text-white px-4 lg:px-5 py-2.5 lg:py-3 transition rounded-md text-sm lg:text-base"
+        >
           افزودن به سبد خرید
         </button>
         <div className="w-20 flex items-center justify-between border border-gray-400">
-          <span className="cursor-pointer py-2 px-2 border-l border-black">
+          <span
+            onClick={() => setCount(count - 1)}
+            className="cursor-pointer py-2 px-2 border-l border-black"
+          >
             -
           </span>
-          <span className="px-2">1</span>
-          <span className="cursor-pointer py-2 px-2 border-r border-black">
+          <span className="px-2">{count}</span>
+          <span
+            onClick={() => setCount(count + 1)}
+            className="cursor-pointer py-2 px-2 border-r border-black"
+          >
             +
           </span>
         </div>
@@ -70,7 +130,7 @@ const Details = ({ product }) => {
 
       {/* Wishlist */}
       <section className="flex flex-col sm:flex-row gap-4 lg:gap-5 mb-8">
-        <AddToWhishList productID={product._id}/>
+        <AddToWhishList productID={product._id} />
         <div className="flex items-center gap-1 text-gray-700 hover:text-gray-500 transition">
           <TbSwitch3 className="text-base lg:text-lg" />
           <a href="/" className="text-xs lg:text-sm">
