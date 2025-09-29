@@ -4,16 +4,17 @@ import { IoMdClose } from "react-icons/io";
 import { useEffect, useState } from "react";
 import stateData from "@/utils/stateData";
 import Select from "react-select";
+import { showSwal } from "@/utils/helper";
 
 const stateOptions = stateData();
 
 const Table = () => {
-  // مقدار اولیه null برای جلوگیری از Hydration Error
   const [cart, setCart] = useState(null);
+  const [discount, setDiscount] = useState("");
   const [stateSelectedOption, setStateSelectedOption] = useState(null);
   const [changeAddress, setChangeAddress] = useState(false);
 
-  const formatter = new Intl.NumberFormat("fa-IR"); // برای اعداد فارسی
+  const formatter = new Intl.NumberFormat("fa-IR");
 
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -26,6 +27,29 @@ const Table = () => {
 
   const calcTotalPrice = () => {
     return cart.reduce((prev, curr) => prev + curr.price * curr.count, 0);
+  };
+
+  const checkDiscount = async () => {
+    const res = await fetch("/api/discounts/use", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ code: discount }),
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+     
+
+    if (res.status === 404) {
+      return showSwal("کد تخفیف وارد شده معتبر نیست", "error", "تلاش مجدد");
+    } else if (res.status === 422) {
+      return showSwal("کد تخفیف وارد شده منقضی شده", "error", "تلاش مجدد");
+    } else if (res.status === 200) {
+      return showSwal("کد تخفیف با موفقیت اعمال شد", "success", "فهمیدم");
+    }
   };
 
   return (
@@ -45,7 +69,9 @@ const Table = () => {
           <tbody>
             {cart.map((item, idx) => (
               <tr key={idx} className="align-middle text-center">
-                <td className="py-2">{formatter.format(item.count * item.price)} تومان</td>
+                <td className="py-2">
+                  {formatter.format(item.count * item.price)} تومان
+                </td>
 
                 {/* شمارنده */}
                 <td>
@@ -61,7 +87,9 @@ const Table = () => {
                 </td>
 
                 {/* قیمت */}
-                <td className="text-gray-500 text-sm py-2">{formatter.format(item.price)} تومان</td>
+                <td className="text-gray-500 text-sm py-2">
+                  {formatter.format(item.price)} تومان
+                </td>
 
                 {/* محصول */}
                 <td>
@@ -95,10 +123,15 @@ const Table = () => {
             بروزرسانی سبد خرید
           </button>
           <div className="flex items-center gap-2">
-            <button className="bg-teal-700 text-white px-6 py-2 text-sm font-medium shadow-inner hover:bg-[#711d1c] transition">
+            <button
+              onClick={checkDiscount}
+              className="bg-teal-700 text-white px-6 py-2 text-sm font-medium shadow-inner hover:bg-[#711d1c] transition"
+            >
               اعمال کوپن
             </button>
             <input
+              value={discount}
+              onChange={(event) => setDiscount(event.target.value)}
               type="text"
               placeholder="کد تخفیف"
               className="px-4 py-2 border border-black/10 rounded w-[160px] sm:w-[230px] text-sm"

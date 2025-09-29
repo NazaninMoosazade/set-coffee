@@ -5,8 +5,8 @@ const ForgotPassword = () => {
   return (
     <div className="z-[999] min-h-screen w-full flex flex-col md:flex-row overflow-hidden bg-[rgb(237,230,234)]">
       {/* سمت فرم */}
-      <div className="md:w-1/2 flex flex-col justify-center px-4 md:px-0">
-        <div className="grid bg-white p-6 w-full max-w-[380px] mx-auto mt-24 md:mt-52 mb-8 rounded-md shadow-md text-center text-black">
+      <div className="md:w-full mx-auto flex flex-col justify-center px-4 md:px-0">
+        <div className="grid bg-white p-6 w-full max-w-[380px] mx-auto  mb-8 rounded-md shadow-md text-center text-black">
           <input
             type="text"
             placeholder="ایمیل / شماره موبایل"
@@ -31,13 +31,13 @@ const ForgotPassword = () => {
       </div>
 
       {/* سمت تصویر */}
-      <section className="md:w-1/2 h-64 md:h-full bg-[rgb(52,24,14)]">
+      {/* <section className="md:w-1/2 h-64 md:h-full bg-[rgb(52,24,14)]">
         <img
           src="https://neurosciencenews.com/files/2023/06/coffee-brain-caffeine-neuroscincces.jpg"
           alt=""
           className="w-full h-full object-cover"
         />
-      </section>
+      </section> */}
     </div>
   );
 };
