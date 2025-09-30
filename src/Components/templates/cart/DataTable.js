@@ -8,26 +8,36 @@ import { showSwal } from "@/utils/helper";
 
 const stateOptions = stateData();
 
+// برای فرمت اعداد به فارسی
+const formatter = new Intl.NumberFormat("fa-IR", {
+  style: "decimal",
+});
+
 const Table = () => {
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useState([]);
   const [discount, setDiscount] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [discountPercent, setDiscountPercent] = useState(0);
   const [stateSelectedOption, setStateSelectedOption] = useState(null);
   const [changeAddress, setChangeAddress] = useState(false);
-
-  const formatter = new Intl.NumberFormat("fa-IR");
 
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(localCart);
   }, []);
 
-  if (cart === null) {
-    return <p className="text-center py-10">در حال بارگذاری...</p>;
-  }
+  useEffect(calcTotalPrice, [cart]);
 
-  const calcTotalPrice = () => {
-    return cart.reduce((prev, curr) => prev + curr.price * curr.count, 0);
-  };
+  function calcTotalPrice() {
+    let price = 0;
+    if (cart.length) {
+      price = cart.reduce(
+        (prev, current) => prev + current.price * current.count,
+        0
+      );
+    }
+    setTotalPrice(price);
+  }
 
   const checkDiscount = async () => {
     const res = await fetch("/api/discounts/use", {
@@ -36,21 +46,21 @@ const Table = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ code: discount }),
-    })
-      .then((res) => {
-        console.log(res);
-        return res.json();
-      })
-     
+    });
 
     if (res.status === 404) {
       return showSwal("کد تخفیف وارد شده معتبر نیست", "error", "تلاش مجدد");
     } else if (res.status === 422) {
       return showSwal("کد تخفیف وارد شده منقضی شده", "error", "تلاش مجدد");
     } else if (res.status === 200) {
+      const discountCode = await res.json();
+      setDiscountPercent(discountCode.percent);
       return showSwal("کد تخفیف با موفقیت اعمال شد", "success", "فهمیدم");
     }
   };
+
+  // محاسبه قیمت نهایی با تخفیف
+  const finalPrice = totalPrice - (totalPrice * discountPercent) / 100;
 
   return (
     <div className="flex flex-col lg:flex-row gap-8">
@@ -70,7 +80,7 @@ const Table = () => {
             {cart.map((item, idx) => (
               <tr key={idx} className="align-middle text-center">
                 <td className="py-2">
-                  {formatter.format(item.count * item.price)} تومان
+                  {item.price.toLocaleString()} تومان
                 </td>
 
                 {/* شمارنده */}
@@ -146,8 +156,15 @@ const Table = () => {
 
         <div className="flex justify-between border-b border-black/10 py-2">
           <p>جمع جزء</p>
-          <p>{formatter.format(calcTotalPrice())} تومان</p>
+          <p>{formatter.format(totalPrice)} تومان</p>
         </div>
+
+        {discountPercent > 0 && (
+          <div className="flex justify-between border-b border-black/10 py-2 text-green-600">
+            <p>تخفیف ({discountPercent}%)</p>
+            <p>-{formatter.format((totalPrice * discountPercent) / 100)} تومان</p>
+          </div>
+        )}
 
         <p className="py-2 text-sm">
           پیک موتوری: <strong>{formatter.format(30000)}</strong>
@@ -200,7 +217,7 @@ const Table = () => {
         <div className="flex justify-between border-t border-black/10 mt-4 pt-4 font-semibold">
           <p>مجموع</p>
           <p className="text-xl text-[#34180e]">
-            {formatter.format(calcTotalPrice())} تومان
+            {formatter.format(finalPrice)} تومان
           </p>
         </div>
 

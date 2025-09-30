@@ -29,3 +29,6 @@ const schema = new mongoose.Schema(
 const model = mongoose.models.Discount || mongoose.model("Discount", schema);
 
 export default model;
+
+export {model}
+

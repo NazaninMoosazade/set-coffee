@@ -6,8 +6,10 @@ import Sms from "../Sms";
 import { showSwal } from "@/utils/helper";
 // import { valiadteEmail, valiadtePassword, valiadtePhone } from "@/utils/auth";
 import { valiadteEmail , valiadtePassword , valiadtePhone } from "@/utils/global/auth";
+import { useRouter } from "next/navigation";
 
 const Register = ({ showloginForm }) => {
+  const router = useRouter()
   const [isRegisterWithPass, setIsRegisterWithPass] = useState(false);
   const [isRegisterWithOtp, setIsRegisterWithOtp] = useState(false);
 
@@ -58,6 +60,7 @@ const Register = ({ showloginForm }) => {
     });
     if (res.status === 201) {
       showSwal("ثبت نام با موفقیت انجام شد", "success", "ورود به پنل کاربری");
+      router.replace('p-user')
     } else if (res.status === 422) {
       showSwal("کاربری با این اطلاعات وجود دارد", "error", " تلاش مجدد  ");
 

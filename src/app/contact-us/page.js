@@ -65,8 +65,8 @@ function page() {
         </main>
       </div>
 
-      <div className="max-w-[1222px] w-full mx-auto mb-16 mt-36 px-4 text-right text-black">
-        <div className="flex flex-col md:flex-row gap-9 mt-12">
+      <div className="max-w-[1222px] w-full mx-auto mb-16  px-4 text-right text-black">
+        <div className="flex flex-col md:flex-row gap-9 ">
           <div className="w-full md:w-1/2">
             <Form />
           </div>

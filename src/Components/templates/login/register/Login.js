@@ -44,7 +44,7 @@ const Login = ({ showRegisterForm }) => {
 
     const user = { email: phoneOrEmail, password };
 
-    console.log("user=>", user);
+    // console.log("user=>", user);
 
     const res = await fetch("/api/auth/signin", {
       method: "POST",
@@ -56,6 +56,7 @@ const Login = ({ showRegisterForm }) => {
 
     if (res.status === 200) {
       showSwal(" با موفقیت لاگین شدید", "success", "ورود به پنل کاربری");
+
       router.replace('p-user')
     } else if (res.status === 422 || res.status === 410) {
       showSwal("کاربری با این اطلاعات یافت نشد", "error", "تلاش مجدد");

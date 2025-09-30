@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { ImReply } from "react-icons/im";
 import { FaComments, FaHeart, FaShoppingBag, FaUsers } from "react-icons/fa";
 import { MdOutlineAttachMoney, MdSms, MdLogout } from "react-icons/md";
@@ -10,8 +11,25 @@ import swal from "sweetalert";
 
 const Sidebar = () => {
   const path = usePathname();
+  const router = useRouter();
 
-  const router = useRouter()
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/auth/adminPanel");
+        const data = await res.json();
+        setUser(data.user);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
+  }, []);
 
   const logoutHandler = () => {
     swal({
@@ -19,33 +37,30 @@ const Sidebar = () => {
       icon: "warning",
       buttons: ["نه", "آره"],
     }).then(async (result) => {
-
       if (result) {
-        const res = await fetch('/api/auth/signout' , {
-          method : 'POST',
-        })
-        if(res.status === 200) {
+        const res = await fetch("/api/auth/signout", { method: "POST" });
+        if (res.status === 200) {
           swal({
-            title: 'با موفقیت از اکانت خارج شدید',
-            icon: 'success',
-            buttons: 'فهمیدم'
-          }).then((result) => {
-           router.replace('/')
-          })
+            title: "با موفقیت از اکانت خارج شدید",
+            icon: "success",
+            buttons: "فهمیدم",
+          }).then(() => router.replace("/"));
         }
       }
     });
   };
+
   const linkClass = (active) =>
-    `flex items-center gap-3 text-[18px] ${
-      active ? "opacity-100" : "opacity-70"
-    }`;
+    `flex items-center gap-3 text-[18px] ${active ? "opacity-100" : "opacity-70"}`;
 
   return (
     <aside className="bg-[#711d1c] w-full flex flex-col h-full text-white">
       {/* Header */}
       <div className="text-center p-2 mt-3 pb-6 border-b border-white">
-        <p>خوش اومدی شاهین عزیز</p>
+        <p>
+          خوش اومدی{" "}
+          {loading ? "در حال بارگذاری..." : user?.name || "ناشناخته"} عزیز
+        </p>
       </div>
 
       {/* Main Links */}
@@ -67,9 +82,6 @@ const Sidebar = () => {
             <Link href={"/p-user/wishlist"} className={linkClass(false)}>
               <FaHeart /> علاقه مندی
             </Link>
-            {/* <Link href={"/p-user/account-details"} className={linkClass(false)}>
-              <TbListDetails /> جزئیات اکانت
-            </Link> */}
           </>
         ) : (
           <>
