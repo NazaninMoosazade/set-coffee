@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaChevronLeft } from "react-icons/fa6";
 import Product from "@/Components/modules/Product/Product";
 
-const Latest = () => {
+const Latest = ({products}) => {
   return (
     <div className="container">
       <section className="flex items-center justify-between mt-16">
@@ -16,14 +16,12 @@ const Latest = () => {
       </section>
       <main className="container">
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {
+            products.map(product => (
+          <Product key={product._id} {...product}/>
+            ))
+          }
+
         </div>
       </main>
     </div>

@@ -2,12 +2,12 @@ import Link from "next/link";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { CiSearch, CiHeart } from "react-icons/ci";
 
-const Product = ({name , price}) => {
+const Product = ({name , price , img}) => {
   return (
     <div className="w-full relative pt-5 text-black rtl">
       <div className="relative mt-1 group">
         <img
-          src="https://set-coffee.com/wp-content/uploads/2021/10/041-430x430.png"
+          src={img}
           alt=""
           className="w-full h-[312px] object-cover transition-transform duration-400 ease-in group-hover:scale-110"
         />

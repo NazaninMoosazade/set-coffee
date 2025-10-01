@@ -7,12 +7,8 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
 
-const Gallery = () => {
+const Gallery = ({ images = [] }) => {   
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const images = [
-    "https://set-coffee.com/wp-content/uploads/2020/12/Gold-DG-700x700.jpg",
-    "https://set-coffee.com/wp-content/uploads/2020/12/Gold-box-DG--150x150.jpg",
-  ];
 
   return (
     <section className="w-full px-4 lg:px-0">
@@ -45,7 +41,7 @@ const Gallery = () => {
         spaceBetween={10}
         slidesPerView={3}
         breakpoints={{
-          640: { slidesPerView: 4 }, // روی موبایل ۳ تا، روی تبلت و دسکتاپ ۴ تا
+          640: { slidesPerView: 4 },
         }}
         freeMode={true}
         watchSlidesProgress={true}

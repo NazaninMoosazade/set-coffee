@@ -32,10 +32,14 @@ const schema = new mongoose.Schema({
   },
   score: {
     type: Number,
-    default : 5,
+    default: 5,
   },
   tags: {
     type: [String],
+    required: true,
+  },
+  img: {
+    type: String, // img src
     required: true,
   },
   comments: {

@@ -38,7 +38,7 @@ const product = async ({params}) => {
 
           {/* Gallery */}
           <div className="w-full lg:w-1/3">
-            <Gallery />
+            <Gallery images={[product.img]} />
           </div>
         </div>
 
@@ -48,9 +48,9 @@ const product = async ({params}) => {
         </div>
 
         {/* More Products Section */}
-        <div className="mt-12">
+        {/* <div className="mt-12">
           <MoreProducts relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}/>
-        </div>
+        </div> */}
       </div>
 
       {/* Footer */}

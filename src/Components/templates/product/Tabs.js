@@ -7,17 +7,18 @@ import Comments from "./Comments";
 const Tabs = ({ product }) => {
   const [tab, setTab] = useState("description");
 
-  const tabs = [
-    { id: "description", label: "توضیحات", component: <Description /> },
-    { id: "moreInfoes", label: "اطلاعات بیشتر", component: <MoreInfoes product={JSON.parse(JSON.stringify(product))}/> },
-    {
-      id: "comments",
-      label: ` ${product.comments.length} نظرات`,
-      component: (
-        <Comments productID={product._id} comments={JSON.parse(JSON.stringify(product.comments))} />
-      ),
-    },
-  ];
+ const tabs = [
+  { id: "description", label: "توضیحات", component: <Description product={product} /> },
+  { id: "moreInfoes", label: "اطلاعات بیشتر", component: <MoreInfoes product={product}/> },
+  {
+    id: "comments",
+    label: ` ${product.comments.length} نظرات`,
+    component: (
+      <Comments productID={product._id} comments={product.comments} />
+    ),
+  },
+];
+
 
   return (
     <div data-aos="fade-left" className="w-full px-4 lg:px-0 mt-8">

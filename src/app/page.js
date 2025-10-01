@@ -6,15 +6,17 @@ import Latest from "@/Components/templates/index/latest/latest";
 import Promote from "@/Components/templates/index/promote/Promote";
 import Footer from "@/Components/modules/Footer/Footer";
 import { authUser } from "@/utils/Server/auth";
+import ProductModel from '@/models/Product'
 
 export default async function page() {
   const user = await authUser();
+  const latestProducts = await ProductModel.find({}).sort({_id : -1}).limit(8)
 
   return (
     <>
       <Navbar isLogin={user}/>
       <Banner /> 
-       <Latest /> 
+       <Latest products={JSON.parse(JSON.stringify(latestProducts))}/> 
       <Promote />
       <Articles />
       <Footer />
