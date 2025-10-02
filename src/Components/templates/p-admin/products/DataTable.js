@@ -61,7 +61,7 @@ export default function DataTable({ products: initialProducts, title }) {
               <th className="py-2 px-4">قیمت</th>
               <th className="py-2 px-4">امتیاز</th>
               <th className="py-2 px-4">مشاهده جزئیات</th>
-              <th className="py-2 px-4">ویرایش</th>
+              {/* <th className="py-2 px-4">ویرایش</th> */}
               <th className="py-2 px-4">حذف</th>
             </tr>
           </thead>
@@ -77,11 +77,11 @@ export default function DataTable({ products: initialProducts, title }) {
                     مشاهده جزئیات
                   </button>
                 </td>
-                <td className="py-2 px-4">
+                {/* <td className="py-2 px-4">
                   <button className="bg-black text-white px-3 py-1 rounded w-full hover:bg-gray-800 transition">
                     ویرایش
                   </button>
-                </td>
+                </td> */}
                 <td onClick={() => deleteProduct(product._id)} className="py-2 px-4">
                   <button className="bg-red-900 text-white px-3 py-1 rounded w-full hover:bg-red-700 transition">
                     حذف
