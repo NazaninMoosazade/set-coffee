@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         green: '#114639',
+        bgBack: '#8d2b29'
       },
       fontFamily: {
         myfont: ['MyFont', 'sans-serif'], // نام فونت مطابق @font-face

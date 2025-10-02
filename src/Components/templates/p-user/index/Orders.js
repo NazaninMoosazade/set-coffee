@@ -4,7 +4,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 
 const Orders = () => {
   return (
-    <div className="bg-[#711d1c0f] w-full md:w-1/2 text-black px-4 rounded-md mx-auto">
+    <div className="font-myfont font-Bold bg-[#711d1c0f] w-full md:w-1/2 text-black px-4 rounded-md mx-auto">
       <div className="flex justify-between p-4 border-b border-[#711d1c]">
         <p>سفارش های اخیر</p>
         <Link href="/p-user/orders" className="flex items-center gap-2">

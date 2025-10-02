@@ -3,7 +3,7 @@ import Link from "next/link";
 const Ticket = ({ _id, title, department, hasAnswer, createdAt }) => {
   return (
     <a
-      className="w-full border-r-[3px] border-[#711d1c] p-4 bg-[#711d1c21] flex justify-between rounded-md my-4 h-[110px] items-center"
+      className="font-myfont font-Bold w-full border-r-[3px] border-[#711d1c] p-4 bg-[#711d1c21] flex justify-between rounded-md my-4 h-[110px] items-center"
     >
       <div className="flex flex-col items-center gap-2 text-center">
         <p> {title}</p>

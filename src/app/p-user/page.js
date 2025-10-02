@@ -26,7 +26,7 @@ const Page = async () => {
     <Layout>
       <main>
         {/* بخش باکس‌ها */}
-        <section className="flex flex-wrap gap-5 mt-12 px-10">
+        <section className="font-myfont font-Bold flex flex-wrap gap-5 mt-12 px-10">
           <Box title="مجموع تیکت ها" value={allTickets.length} />
           <Box title="مجموع کامنت ها" value={comments.length} />
           <Box title="مجموع سفارشات" value="0" /> 

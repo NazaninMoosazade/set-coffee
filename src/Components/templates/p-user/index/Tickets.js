@@ -7,7 +7,7 @@ const Tickets = ({tickets}) => {
     <div className="bg-[#711d1c0f] w-1/2 text-black px-4 rounded-md">
       {/* هدر بالای تیکت‌ها */}
       <div className="flex justify-between p-4 border-b border-[#711d1c]">
-        <p className="font-medium">تیکت های اخیر</p>
+        <p className="font-myfont font-Light">تیکت های اخیر</p>
       </div>
 
       {/* لیست تیکت‌ها */}

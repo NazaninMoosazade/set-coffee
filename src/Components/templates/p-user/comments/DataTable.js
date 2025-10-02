@@ -12,7 +12,7 @@ export default function DataTable({ title, comments }) {
   };
 
   return (
-    <div className="w-full px-4 sm:px-6 lg:px-8">
+    <div className="font-myfont font-Bold w-full px-4 sm:px-6 lg:px-8">
       <div className="relative mt-8 text-right">
         <h1 className="text-2xl sm:text-3xl font-medium inline-block relative z-10 px-3 sm:px-4 bg-white">
           {title}

@@ -27,7 +27,7 @@ const product = async ({params}) => {
       {/* Main Content */}
       <div
         data-aos="fade-up"
-        className="max-w-[1200px] mx-auto mt-40 px-4 lg:px-0 text-right text-black font-shabnam pb-20"
+        className="max-w-[1200px] mx-auto mt-16 px-4 lg:px-0 text-right text-black font-shabnam pb-20"
       >
         {/* Gallery + Details */}
         <div className="flex flex-col lg:flex-row-reverse gap-8">

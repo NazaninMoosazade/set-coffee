@@ -35,7 +35,7 @@ const Topbar = ({ toggleSidebar }) => {
         <button className="md:hidden text-xl" onClick={toggleSidebar}>☰</button>
 
         {/* Profile */}
-        <div className="flex items-center gap-2 flex-row-reverse">
+        <div className="font-myfont font-Bold flex items-center gap-2 flex-row-reverse">
           <div className="text-right">
             <p className="font-medium">
               {loading ? "در حال بارگذاری..." : user?.name || "ناشناخته"}
@@ -44,11 +44,6 @@ const Topbar = ({ toggleSidebar }) => {
               پنل کاربری
             </span>
           </div>
-          <img 
-            src="/images/shahin.jpg" 
-            alt="Profile" 
-            className="w-10 h-10 rounded-full object-cover"
-          />
         </div>
 
 
@@ -70,7 +65,7 @@ const Topbar = ({ toggleSidebar }) => {
       {/* Modal */}
       {showModal && (
         <Modal title="پیام پشتیبانی" hideModal={hideModal}>
-          <p className="my-12 text-center">عالی هستید!</p>
+          <p className="font-myfont font-Bold my-12 text-center">عالی هستید!</p>
         </Modal>
       )}
     </>

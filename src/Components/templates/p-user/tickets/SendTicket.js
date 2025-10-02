@@ -72,10 +72,10 @@ const SendTicket = () => {
   };
 
   return (
-    <main className="px-8 md:px-12">
+    <main className="font-myfont font-Bold px-8 md:px-12">
       {/* عنوان */}
       <h1 className="mt-8 mb-8 relative text-2xl md:text-3xl font-medium flex justify-between items-center uppercase">
-        <span className="bg-white px-4 mr-16">ارسال تیکت جدید</span>
+        <span className=" bg-white px-4 mr-16">ارسال تیکت جدید</span>
         <span className="absolute top-1/2 left-0 w-full border-b border-[#711d1c] -z-10"></span>
       </h1>
 

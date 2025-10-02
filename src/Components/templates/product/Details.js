@@ -78,14 +78,14 @@ const Details = ({ product }) => {
               <FaRegStar key={index} />
             ))}
           </div>
-          <p className="font-myfont font-Mediom text-gray-600 text-xs lg:text-sm">
-            (دیدگاه کاربر {product.comments.length})
+          <p className="text-gray-600 font-myfont font-Light text-xs lg:text-sm">
+            (دیدگاه {product.comments.length} کاربر)
           </p>
         </div>
       )}
 
       {/* Price */}
-      <p className="text-[rgb(52,24,14)] text-xl lg:text-2xl font-myfont font-Bold my-4 lg:my-6">
+      <p className="text-[rgb(52,24,14)] font-myfont font-Bold text-xl lg:text-2xl my-4 lg:my-6">
         {product?.price != null ? product.price.toLocaleString("fa-IR") : ""}{" "}
         تومان
       </p>
@@ -107,7 +107,7 @@ const Details = ({ product }) => {
       <div className="flex flex-row-reverse items-center justify-end gap-3 text-center mb-6">
         <button
           onClick={addToCart}
-          className="bg-teal-600 hover:bg-[rgb(113,29,28)] text-white font-myfont font-Light px-4 lg:px-5 py-2.5 lg:py-3 transition rounded-md text-sm lg:text-base"
+          className="font-myfont font-Bold bg-teal-600  hover:bg-[rgb(113,29,28)] text-white px-4 lg:px-5 py-2.5 lg:py-3 transition rounded-md text-sm lg:text-base"
         >
           افزودن به سبد خرید
         </button>
@@ -128,6 +128,10 @@ const Details = ({ product }) => {
         </div>
       </div>
 
+      {/* Wishlist */}
+      <section className="font-myfont font-Bold mb-8">
+        <AddToWhishList productID={product._id} />
+      </section>
 
       <hr />
 
@@ -135,8 +139,8 @@ const Details = ({ product }) => {
       <div className="flex flex-col gap-3 mt-8 text-sm lg:text-base leading-6">
         {/* <strong>شناسه محصول: {product._id}   </strong> */}
 
-        <p className="font-myfont font-Light flex flex-col">
-          <strong >برچسب:</strong>
+        <p className="font-myfont font-Bold flex flex-col">
+          <strong>برچسب:</strong>
           {product.tags.join(" , ")}
         </p>
       </div>
