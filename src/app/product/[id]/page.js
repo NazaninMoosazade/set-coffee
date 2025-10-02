@@ -17,7 +17,7 @@ const product = async ({params}) => {
   const product = await ProductModel.findOne({_id : productID}).populate("comments");
 
 
-  const relatedProducts = await ProductModel.find(({smell : product.smell}))
+  // const relatedProducts = await ProductModel.find(({smell : product.smell}))
 
   return (
     <div className="overflow-auto">

@@ -44,7 +44,7 @@ export default function Navbar({ isLogin }) {
           </div>
 
           {/* Desktop Links */}
-          <ul className="hidden md:flex items-center gap-x-6 text-gray-700">
+          <ul className="font-myfont font-Bold hidden md:flex items-center gap-x-6 text-gray-700">
             <li>
               <Link href={"/"}>صفحه اصلی</Link>
             </li>
@@ -68,7 +68,7 @@ export default function Navbar({ isLogin }) {
                 </Link>
 
                 {/* Dropdown */}
-                <div className="absolute z-50 right-0 mt-2 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div className="font-myfont font-medium absolute z-50 right-0 mt-2 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   <Link
                     className="block px-4 py-2 hover:bg-gray-100"
                     href="/p-user/orders"

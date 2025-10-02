@@ -5,10 +5,9 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="bg-neutral-900 mt-20 pt-10 text-white">
-      <main className="container mx-auto flex flex-col md:flex-row-reverse justify-between text-right gap-10 md:gap-0 pb-10">
-        
+      <main className="font-myfont font-Light container mx-auto flex flex-col md:flex-row-reverse justify-between text-right gap-10 md:gap-0 pb-10">
         {/* بخش توضیحات */}
-        <section className="w-full md:w-72 p-3 text-sm leading-relaxed space-y-4">
+        <section className=" w-full md:w-72 p-3 text-sm leading-relaxed space-y-4">
           <img src="/images/logo_light.png" alt="logo" className="mb-4" />
           <p className="mt-5 mb-7">
             شرکت فنجان داغ خوارزمی، فروشگاه اینترنتی قهوه ست
@@ -32,7 +31,7 @@ const Footer = () => {
         </section>
 
         {/* بخش لینک‌ها */}
-        <ul className="flex flex-col sm:flex-row gap-10 md:gap-20 text-right">
+        <ul className=" flex flex-col sm:flex-row gap-10 md:gap-20 text-right">
           <div>
             <h4 className="mb-4 font-bold">منوی فوتر</h4>
             <li className="mt-2 text-neutral-400 hover:text-white">
@@ -89,9 +88,9 @@ const Footer = () => {
 
       <hr className="border-neutral-600" />
 
-      <div className="container mx-auto">
+      <div className="font-myfont font-Mediom container mx-auto">
         <p className="py-5 text-xs text-right text-neutral-400 flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
-          2023 <MdOutlineCopyright /> تمام حقوق متعلق است به
+            تمام حقوق متعلق است به
           <strong className="text-white"> قهوه ست </strong> | طراحی و اجرا
           <strong className="text-white"> نازنین موسی زاده</strong>
         </p>

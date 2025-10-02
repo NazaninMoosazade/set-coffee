@@ -7,19 +7,27 @@ module.exports = {
   ],
   theme: {
     extend: {
-        container: {
+      container: {
         center: true,
         padding: {
           DEFAULT: "1rem",
           lg: "0.625rem",
         },
       },
-      colors :{
-        green: '#114639'
-      }
+      colors: {
+        green: '#114639',
+      },
+      fontFamily: {
+        myfont: ['MyFont', 'sans-serif'], // نام فونت مطابق @font-face
+      },
+      fontWeight: {
+        Light: 300,
+        Mediom: 500,
+        Bold: 700,
+      },
     },
   },
-   plugins: [
+  plugins: [
     function ({ addVariant }) {
       addVariant("child", "& > *");
       addVariant("child-hover", "&>*:hover");

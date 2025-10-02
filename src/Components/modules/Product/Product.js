@@ -16,7 +16,7 @@ const Product = ({ name, price, img, _id }) => {
 
         {/* جزئیات */}
         <div className="flex flex-col gap-1 text-center mt-6 justify-center">
-          <Link href={`/product/${_id}`} className="text-black">
+          <Link href={`/product/${_id}`} className="font-myfont font-Bold text-black">
             {name}
           </Link>
           <div className="flex justify-center gap-1 text-orange-500 ltr">
@@ -26,7 +26,7 @@ const Product = ({ name, price, img, _id }) => {
             <FaRegStar />
             <FaRegStar />
           </div>
-          <span className="text-[#34180e]">
+          <span className="font-myfont font-Light text-[#34180e]">
             {price?.toLocaleString()} تومان
           </span>
         </div>

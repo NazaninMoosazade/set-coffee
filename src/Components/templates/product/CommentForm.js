@@ -37,14 +37,14 @@ const CommentForm = ({ productID }) => {
   body: JSON.stringify(newComment),
 });
   if(res.status === 201) {
-    showSwal('کامنت مورد نظذ با موفقیت ثبت شد ' ,'success' , 'ok')
+    showSwal('کامنت مورد نظر با موفقیت ثبت شد ' ,'success' , 'ok')
   } 
     
   };
 
   return (
-    <div className="w-full bg-white p-4 lg:p-6 rounded-lg shadow-sm">
-      <p className="text-sm lg:text-base font-bold mb-2">
+    <div className="font-myfont font-Bold w-full bg-white p-4 lg:p-6 rounded-lg shadow-sm">
+      <p className="text-sm lg:text-base mb-2">
         دیدگاه خود را بنویسید
       </p>
       <p className="text-xs lg:text-sm text-gray-600">

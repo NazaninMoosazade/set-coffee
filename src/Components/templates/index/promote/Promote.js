@@ -12,10 +12,10 @@ const Promote = () => {
           <main className="flex flex-col md:flex-row-reverse justify-between mt-20 mb-12 text-right gap-8 md:gap-4">
             {/* متن */}
             <section className="w-full md:w-1/2 font-shabnam text-black text-center md:text-right p-6 md:p-10">
-              <span className="text-[#114639] text-2xl md:text-3xl block mb-4">
+              <span className="font-myfont font-Bold text-[#114639] text-2xl md:text-3xl block mb-4">
                 خرید قهوه ، به سبک حرفه ای ها
               </span>
-              <p className="text-gray-500 mb-8 md:mb-20 text-sm md:text-base">
+              <p className="font-myfont font-Light text-gray-500 mb-8 md:mb-20 text-sm md:text-base">
                 زیبایی امروز رو با قهوه “ست” کنید
               </p>
               <img
@@ -32,10 +32,10 @@ const Promote = () => {
               style={{ backgroundImage: "url('/images/clubset1.jpg')" }}
             >
               <div className="absolute bottom-5 left-0 p-6 md:p-8 w-full max-w-[411px] bg-white rounded-md shadow-lg">
-                <span className="font-semibold block mb-2">
+                <span className="font-myfont font-Bold block mb-2">
                   باشگاه مشتریان ست
                 </span>
-                <p className="mt-2 text-gray-600 text-sm">
+                <p className="font-myfont font-Light mt-2 text-gray-600 text-sm">
                   برای مشتریان وفادار قهوه ست
                 </p>
               </div>
@@ -61,23 +61,23 @@ const Promote = () => {
                 src="/images/coffee-svg-2.svg"
                 alt=""
               />
-              <p className="text-[#711d1c] text-3xl md:text-4xl font-bold mb-4">
+              <p className="font-myfont font-Bold text-[#711d1c] text-3xl md:text-4xl mb-4">
                 چرا قهوه ست
               </p>
-              <p className="text-gray-500 text-sm md:text-base leading-7 md:leading-8 mb-6">
+              <p className="font-myfont font-Light text-gray-500 text-sm md:text-base leading-7 md:leading-8 mb-6">
                 برخورداری از تجربه و قدمت کافی و آگاهی از ذایقه مصرف کنندگان
                 راهنمای ما در برآورده ساختن نیاز مشتریان قهوه تخصصی (موج سوم)
                 است. تجربه ای به قدمت چهار نسل و ارتباط مستمر با مصرف کنندگان
                 قهوه ضامن این ویژگی‌ها است.
               </p>
-              <div className="flex flex-col sm:flex-row-reverse gap-4 mt-6">
+              <div className="font-myfont font-Mediom flex flex-col sm:flex-row-reverse gap-4 mt-6">
                 <Link href="/about-us">
-                  <button className="bg-[#711d1c] border border-[#711d1c] text-white px-5 py-3 cursor-pointer rounded-md">
+                  <button className=" bg-[#711d1c] border border-[#711d1c] text-white px-5 py-3 cursor-pointer rounded-md">
                     بیشتر بخوانید
                   </button>
                 </Link>
                 <Link href="/category">
-                  <button className="border border-gray-300 px-5 py-3 cursor-pointer bg-white text-black rounded-md">
+                  <button className=" border border-gray-300 px-5 py-3 cursor-pointer bg-white text-black rounded-md">
                     فروشگاه
                   </button>
                 </Link>

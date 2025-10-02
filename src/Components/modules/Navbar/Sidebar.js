@@ -22,14 +22,14 @@ export default function Sidebar({ open, setOpen, isLogin }) {
       >
         {/* Header */}
         <div className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-lg font-bold">منو</h2>
+          <h2 className="font-myfont font-Bold text-lg">منو</h2>
           <button onClick={() => setOpen(false)}>
             <IoMdClose size={24} />
           </button>
         </div>
 
         {/* Links */}
-        <ul className="flex flex-col gap-y-4 p-4 text-gray-700">
+        <ul className="font-myfont font-Light flex flex-col gap-y-4 p-4 text-gray-700">
           <li>
             <Link href={"/"} onClick={() => setOpen(false)}>
               صفحه اصلی

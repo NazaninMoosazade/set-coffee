@@ -22,6 +22,35 @@
   }
 }
 
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/shabnam/Shabnam-Light.woff2') format('woff2'),
+       url('/fonts/shabnam/Shabnam-Light.woff') format('woff');
+  font-weight: 300; /* سبک */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/shabnam/Shabnam-Medium.woff2') format('woff2'),
+       url('/fonts/shabnam/Shabnam-Medium.woff') format('woff');
+  font-weight: 500; /* متوسط */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/shabnam/Shabnam-Bold.woff2') format('woff2'),
+       url('/fonts/shabnam/Shabnam-Bold.woff') format('woff');
+  font-weight: 700; /* ضخیم */
+  font-style: normal;
+}
+
+body {
+  font-family: 'MyFont', sans-serif;
+}
+
+
 .swiper-button-next,
 .swiper-button-prev {
   padding: 0.5rem;

@@ -3,9 +3,8 @@ import React from "react";
 const MoreInfoes = ({product}) => {
   return (
     <div>
-      <p>اطلاعات بیشتر :</p>
       <hr />
-      <main className="space-y-6">
+      <main className="font-myfont font-Bold space-y-6">
         <div className="mt-5" style={{ display: "flex", justifyContent: "space-between" }}>
           <p>وزن</p>
           <p>{product.weight} گرم</p>

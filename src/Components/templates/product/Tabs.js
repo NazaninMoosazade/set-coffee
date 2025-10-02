@@ -25,7 +25,7 @@ const Tabs = ({ product }) => {
       {/* Tab Buttons */}
       <ul className="flex flex-wrap justify-center gap-2 sm:gap-4 border-b border-gray-300">
         {tabs.map((t) => (
-          <li key={t.id} className="flex-1 text-center">
+          <li key={t.id} className="font-myfont font-Bold flex-1 text-center">
             <button
               onClick={() => setTab(t.id)}
               className={`relative py-3 px-2 sm:px-4 text-sm sm:text-base font-bold transition-colors duration-300

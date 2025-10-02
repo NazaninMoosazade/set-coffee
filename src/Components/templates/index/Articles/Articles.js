@@ -8,8 +8,8 @@ import Article from "./Article";
 const Articles = () => {
   return (
     <div className="container mx-auto text-center mt-20 px-4 sm:px-6 lg:px-8">
-      <p className="text-green-600 text-4xl font-bold">مقالات ما</p>
-      <span className="text-xl block mt-2">دانستنی های جذاب دنیای قهوه</span>
+      <p className="font-myfont font-Bold text-green-600 text-4xl">مقالات ما</p>
+      <span className="font-myfont font-Light text-xl block mt-2">دانستنی های جذاب دنیای قهوه</span>
 
       <main className="mt-10">
         <Swiper

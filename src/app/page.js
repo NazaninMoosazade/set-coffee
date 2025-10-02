@@ -16,7 +16,7 @@ export default async function page() {
     <>
       <Navbar isLogin={user}/>
       <Banner /> 
-       <Latest products={JSON.parse(JSON.stringify(latestProducts))}/> 
+      <Latest products={JSON.parse(JSON.stringify(latestProducts))}/> 
       <Promote />
       <Articles />
       <Footer />
