@@ -30,7 +30,7 @@ export default function Topbar({ setIsOpen }) {
       </button>
 
       {/* لوگو یا عنوان */}
-      <span className="font-bold sm:hidden">پنل مدیریت</span>
+      <span className="font-myfont font-Bold sm:hidden">پنل مدیریت</span>
 
       {/* پروفایل */}
       <div className="flex flex-row-reverse items-center gap-2">
@@ -38,7 +38,7 @@ export default function Topbar({ setIsOpen }) {
           <p className="text-sm sm:text-base">
             {loading ? "در حال بارگذاری..." : user?.name || "ناشناخته"}
           </p>
-          <span className="text-lg text-gray-400">
+          <span className=" font-myfont font-Bold text-lg text-gray-400">
            ادمین
           </span>
         </div>

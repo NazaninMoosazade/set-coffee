@@ -36,7 +36,7 @@ export default function LogoutButtonClient({ closeSidebar }) {
 
   return (
     <div
-      className="flex items-center justify-between flex-row-reverse cursor-pointer w-[90%] mx-auto pt-3 text-xl border-t-2 border-white"
+      className="font-myfont font-Bold flex items-center justify-between flex-row-reverse cursor-pointer w-[90%] mx-auto pt-3 text-xl border-t-2 border-white"
       onClick={logoutHandler}
     >
       <MdLogout /> خروج

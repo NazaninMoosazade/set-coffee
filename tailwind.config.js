@@ -1,9 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -15,11 +15,12 @@ module.exports = {
         },
       },
       colors: {
-        green: '#114639',
-        bgBack: '#8d2b29'
+        green: "#114639",
+        bgBack: "#8d2b29",
+        commentPink: "oklch(69.6% 0.17 162.48)",
       },
       fontFamily: {
-        myfont: ['MyFont', 'sans-serif'], // نام فونت مطابق @font-face
+        myfont: ["MyFont", "sans-serif"], // نام فونت مطابق @font-face
       },
       fontWeight: {
         Light: 300,
@@ -34,4 +35,4 @@ module.exports = {
       addVariant("child-hover", "&>*:hover");
     },
   ],
-}
+};

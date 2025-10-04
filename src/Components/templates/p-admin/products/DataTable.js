@@ -42,7 +42,7 @@ export default function DataTable({ products: initialProducts, title }) {
   };
 
   return (
-    <div className="p-4 md:p-8">
+    <div className="p-4 font-myfont font-Bold md:p-8">
       {/* Title */}
       <div className="relative text-right my-8">
         <h1 className="text-2xl md:text-3xl font-medium uppercase inline-block relative z-10">

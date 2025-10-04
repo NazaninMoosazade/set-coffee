@@ -41,7 +41,7 @@ function AddDiscount() {
   };
 
   return (
-    <section className="p-5 bg-white rounded-lg shadow-md">
+    <section className="p-5 font-myfont font-Bold bg-white rounded-lg shadow-md">
       <p className="mt-2 mb-8 text-right uppercase text-2xl md:text-3xl font-bold relative z-10">
         افزودن کد تخفیف جدید
       </p>

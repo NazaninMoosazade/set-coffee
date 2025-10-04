@@ -19,7 +19,7 @@ export default function DataTable({ comments: initialComments, title }) {
 
     if (res.status === 200) {
       swal("کامنت مورد نظر با موفقیت رد شد", "", "success");
-      setComments(prev => prev.filter(c => c._id !== commentID));
+      setComments((prev) => prev.filter((c) => c._id !== commentID));
     }
   };
 
@@ -32,14 +32,16 @@ export default function DataTable({ comments: initialComments, title }) {
 
     if (res.status === 200) {
       swal("کامنت مورد نظر با موفقیت تایید شد", "", "success");
-      setComments(prev =>
-        prev.map(c => c._id === commentID ? { ...c, isAccept: true } : c)
+      setComments((prev) =>
+        prev.map((c) =>
+          c._id === commentID ? { ...c, isAccept: true } : c
+        )
       );
     }
   };
 
   return (
-    <div className="px-4 md:px-8">
+    <div className="px-4 font-myfont font-Bold md:px-8">
       <div className="relative mt-8">
         <h1 className="relative z-10 text-2xl md:text-3xl font-medium text-right uppercase inline-block bg-white pr-6">
           {title}
@@ -66,20 +68,33 @@ export default function DataTable({ comments: initialComments, title }) {
             </tr>
           </thead>
           <tbody>
-            {comments.map((comment, index) => (
-              <tr key={comment._id} className="bg-white even:bg-gray-50 text-sm md:text-base">
-                <td className={`p-3 text-center ${comment.isAccept ? 'bg-emerald-600' : 'bg-red-600'}`}>
+            {comments?.map((comment, index) => (
+              <tr
+                key={comment?._id || index}
+                className="bg-white even:bg-gray-50 text-sm md:text-base"
+              >
+                <td
+                  className={`p-3 text-center ${
+                    comment?.isAccept ? "bg-emerald-600" : "bg-red-600"
+                  }`}
+                >
                   {index + 1}
                 </td>
-                <td className="p-3 text-center">{comment.username}</td>
-                <td className="p-3 text-center">{comment.email}</td>
-                <td className="p-3 text-center">{comment.score}</td>
-                <td className="p-3 text-center">{comment.productID.name}</td>
-                <td className="p-3 text-center">{new Date(comment.date).toLocaleDateString("fa-IR")}</td>
+                <td className="p-3 text-center">{comment?.username || "-"}</td>
+                <td className="p-3 text-center">{comment?.email || "-"}</td>
+                <td className="p-3 text-center">{comment?.score ?? "-"}</td>
+                <td className="p-3 text-center">
+                  {comment?.productID?.name || "ناموجود"}
+                </td>
+                <td className="p-3 text-center">
+                  {comment?.date
+                    ? new Date(comment.date).toLocaleDateString("fa-IR")
+                    : "-"}
+                </td>
                 <td className="p-2">
                   <button
                     className="w-full rounded bg-black text-white px-3 py-1 text-xs md:text-sm hover:bg-gray-800 transition"
-                    onClick={() => showCommentBody(comment.body)}
+                    onClick={() => showCommentBody(comment?.body || "")}
                   >
                     مشاهده
                   </button>
@@ -92,22 +107,22 @@ export default function DataTable({ comments: initialComments, title }) {
                 <td className="p-2">
                   <button
                     className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
-                    onClick={() => rejectComment(comment._id)}
+                    onClick={() => rejectComment(comment?._id)}
                   >
                     حذف
                   </button>
                 </td>
                 <td className="p-2">
-                  {comment.isAccept ? (
+                  {comment?.isAccept ? (
                     <button
-                      onClick={() => rejectComment(comment._id)}
+                      onClick={() => rejectComment(comment?._id)}
                       className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
                     >
                       رد
                     </button>
                   ) : (
                     <button
-                      onClick={() => acceptComment(comment._id)}
+                      onClick={() => acceptComment(comment?._id)}
                       className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
                     >
                       تایید

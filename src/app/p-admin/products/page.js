@@ -14,7 +14,7 @@ const page = async () => {
       <main>
         <AddProduct/>
         {products.length === 0 ? (
-          <p className="text-white bg-red-900 py-4 px-8 mt-8 rounded text-lg md:text-xl text-center">
+          <p className="text-white font-myfont font-Bold bg-red-900 py-4 px-8 mt-8 rounded text-lg md:text-xl text-center">
             محصولی وجود ندارد
           </p>
         ) : (

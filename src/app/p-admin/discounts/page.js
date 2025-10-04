@@ -14,7 +14,7 @@ const Discounts = async () => {
         <AddDiscount />
 
         {discounts.length === 0 ? (
-          <p className="mt-6 text-center px-6 py-2 bg-[#711d1c] text-white rounded-md hover:bg-red-800 transition ">
+          <p className="mt-6 font-myfont font-Bold text-center px-6 py-2 bg-[#711d1c] text-white rounded-md hover:bg-red-800 transition ">
             کد تخفیفی وجود ندارد
           </p>
         ) : (

@@ -4,7 +4,7 @@ function Table({ discounts }) {
 
   
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto font-myfont font-Bold">
       <table className="w-full bg-[#f2f7fd] rounded-lg shadow-md">
         <thead>
           <tr className="bg-[#e4ebf7] text-black text-sm md:text-base">

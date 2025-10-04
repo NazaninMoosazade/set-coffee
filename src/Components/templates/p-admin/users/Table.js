@@ -71,7 +71,7 @@ export default function DataTable({ users, title }) {
   return (
     <div>
       {/* Title */}
-      <div className="relative mt-8 text-right">
+      <div className="relative mt-8 font-myfont font-Bold text-right">
         <h1 className="relative z-10 inline-block text-2xl font-medium uppercase bg-white pr-4">
           <span>{title}</span>
         </h1>
@@ -80,7 +80,7 @@ export default function DataTable({ users, title }) {
 
       {/* Table */}
       <div className="p-10">
-        <table className="w-full bg-[#f2f7fd]">
+        <table className="w-full font-myfont font-Bold bg-[#f2f7fd]">
           <thead>
             <tr>
               <th className="p-2 text-center">شناسه</th>

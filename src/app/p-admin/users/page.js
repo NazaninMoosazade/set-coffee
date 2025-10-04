@@ -13,7 +13,7 @@ const page = async () => {
       <AdminPanelLayout>
         <main>
           {users.length === 0 ? (
-            <p className="text-white bg-[#711d1c] px-8 py-3 w-max mx-auto my-60 text-2xl rounded-md">
+            <p className="text-white font-myfont font-Bold bg-[#711d1c] px-8 py-3 w-max mx-auto my-60 text-2xl rounded-md">
               کاربری وجود ندارد
             </p>
           ) : (

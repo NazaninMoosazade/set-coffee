@@ -15,7 +15,7 @@ const page = async () => {
     <AdminPanelLayout>
       <main>
         {comments.length === 0 ? (
-          <p>کامنتی وجود ندارد</p>
+          <p className='text-white font-myfont font-Bold bg-red-900 py-4 px-8 mt-8 rounded text-lg md:text-xl text-center'>کامنتی وجود ندارد</p>
         ) : (
           <DataTable
             comments={JSON.parse(JSON.stringify(comments))}

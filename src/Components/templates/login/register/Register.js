@@ -70,7 +70,7 @@ const Register = ({ showloginForm }) => {
   return (
     <>
       {!isRegisterWithOtp ? (
-        <div className="grid bg-white p-6 w-full max-w-[380px] font-[shabnam] mx-auto mt-20 mb-8 rounded-xl shadow-lg text-center text-black">
+        <div className="grid bg-white font-myfont font-Bold p-6 w-full max-w-[380px] mx-auto mt-20 mb-8 rounded-xl shadow-lg text-center text-black">
           {/* نام */}
           <input
             className="font-[shabnam] p-3 bg-white text-black rounded-md border border-gray-400 rtl mt-5 w-full focus:outline-none focus:ring-2 focus:ring-[#34180e]"
