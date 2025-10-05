@@ -1,18 +1,11 @@
 "use client";
-import { MdOutlineSms } from "react-icons/md";
-import { IoShareSocialOutline } from "react-icons/io5";
 import Link from "next/link";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaPinterest,
-  FaTelegram,
-  FaTwitter,
-} from "react-icons/fa";
+
 
 const Article = ({ _id, img, title, content, createdAt, tags }) => {
   return (
-    <div className="relative overflow-hidden group">
+    <Link href={`/article/${_id}`}>
+        <div className="relative overflow-hidden group">
       {/* تصویر مقاله */}
       <Link href={`/article/${_id}`} className="block relative overflow-hidden">
         <img
@@ -25,7 +18,7 @@ const Article = ({ _id, img, title, content, createdAt, tags }) => {
 
       {/* تاریخ */}
       <div className="absolute top-3 right-3 bg-white text-black rounded-sm px-2 py-1 grid place-items-center z-10">
-        <span className="text-sm font-semibold">{createdAt}</span>
+        <span className="text-sm font-myfont font-Bold">{createdAt}</span>
       </div>
 
       {/* جزئیات */}
@@ -35,7 +28,7 @@ const Article = ({ _id, img, title, content, createdAt, tags }) => {
           {tags?.map((tag) => (
             <span
               key={tag}
-              className="inline-block bg-[#34180e] text-white text-xs px-2 py-1 rounded-sm"
+              className="inline-block font-myfont font-Bold bg-[#34180e] text-white text-xs px-2 py-1 rounded-sm"
             >
               {tag}
             </span>
@@ -45,37 +38,17 @@ const Article = ({ _id, img, title, content, createdAt, tags }) => {
         {/* عنوان */}
         <Link
           href={`/article/${_id}`}
-          className="block text-xl md:text-2xl font-semibold my-2 leading-snug"
+          className="block text-xl md:text-2xl font-myfont font-Bold my-2 leading-snug"
         >
           {title}
         </Link>
 
-        {/* نویسنده و آیکون‌ها */}
-        <div className="flex justify-center items-center gap-3 text-gray-300 text-sm mt-2 flex-wrap">
-          <p className="w-full">{content}</p>
-
-          {/* کامنت */}
-          <div className="relative">
-            <MdOutlineSms className="text-lg cursor-pointer" />
-            <span className="absolute -top-1 -left-1 text-[7px] bg-[#34180e] px-[2px] rounded-full">
-              0
-            </span>
-          </div>
-
-          {/* اشتراک گذاری */}
-          <div className="relative group">
-            <IoShareSocialOutline className="text-lg cursor-pointer" />
-            <div className="absolute -top-9 left-1/2 transform -translate-x-1/2 flex gap-2 bg-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity z-50">
-              <Link href="/"><FaTelegram className="text-white text-sm" /></Link>
-              <Link href="/"><FaLinkedinIn className="text-white text-sm" /></Link>
-              <Link href="/"><FaPinterest className="text-white text-sm" /></Link>
-              <Link href="/"><FaTwitter className="text-white text-sm" /></Link>
-              <Link href="/"><FaFacebookF className="text-white text-sm" /></Link>
-            </div>
-          </div>
-        </div>
+   
+     
       </div>
     </div>
+    </Link>
+
   );
 };
 

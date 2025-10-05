@@ -30,6 +30,7 @@ export default function Sidebar({ closeSidebar }) {
   // رنگ‌ها برای هر مسیر
   const activeColors = {
     "/p-admin/products": "bg-red-500 text-white",
+    "/p-admin/articles": "bg-purple-500 text-white",
     "/p-admin/users": "bg-blue-500 text-white",
     "/p-admin/comments": "bg-orange-500 text-white",
     "/p-admin/tickets": "bg-purple-500 text-white",
@@ -48,11 +49,24 @@ export default function Sidebar({ closeSidebar }) {
         <Link
           href="/p-admin/products"
           className={`${linkClasses} ${
-            path === "/p-admin/products" ? activeColors["/p-admin/products"] : ""
+            path === "/p-admin/products"
+              ? activeColors["/p-admin/products"]
+              : ""
           }`}
           onClick={closeSidebar}
         >
           محصولات
+        </Link>
+        <Link
+          href="/p-admin/articles"
+          className={`${linkClasses} ${
+            path === "/p-admin/articles"
+              ? activeColors["/p-admin/articles"]
+              : ""
+          }`}
+          onClick={closeSidebar}
+        >
+          مقالات
         </Link>
 
         <Link
@@ -68,7 +82,9 @@ export default function Sidebar({ closeSidebar }) {
         <Link
           href="/p-admin/comments"
           className={`${linkClasses} ${
-            path === "/p-admin/comments" ? activeColors["/p-admin/comments"] : ""
+            path === "/p-admin/comments"
+              ? activeColors["/p-admin/comments"]
+              : ""
           }`}
           onClick={closeSidebar}
         >
