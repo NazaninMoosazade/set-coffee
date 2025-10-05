@@ -13,10 +13,16 @@ const page = async () => {
     <>
       <AdminPanelLayout>
         <AddArticle />
-        <DataTable
-          articles={JSON.parse(JSON.stringify(articles))}
-          title="لیست محصولات"
-        />
+        {articles.length === 0 ? (
+          <p className="text-white font-myfont font-Bold bg-red-900 py-4 px-8 mt-8 rounded text-lg md:text-xl text-center">
+            محصولی وجود ندارد
+          </p>
+        ) : (
+          <DataTable
+            articles={JSON.parse(JSON.stringify(articles))}
+            title="لیست محصولات"
+          />
+        )}
       </AdminPanelLayout>
     </>
   );

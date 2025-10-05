@@ -33,9 +33,7 @@ export default function DataTable({ comments: initialComments, title }) {
     if (res.status === 200) {
       swal("کامنت مورد نظر با موفقیت تایید شد", "", "success");
       setComments((prev) =>
-        prev.map((c) =>
-          c._id === commentID ? { ...c, isAccept: true } : c
-        )
+        prev.map((c) => (c._id === commentID ? { ...c, isAccept: true } : c))
       );
     }
   };
@@ -60,11 +58,8 @@ export default function DataTable({ comments: initialComments, title }) {
               <th className="p-3 text-center">محصول</th>
               <th className="p-3 text-center">تاریخ ثبت</th>
               <th className="p-3 text-center">مشاهده</th>
-              <th className="p-3 text-center">ویرایش</th>
               <th className="p-3 text-center">حذف</th>
               <th className="p-3 text-center">رد / تایید</th>
-              <th className="p-3 text-center">پاسخ</th>
-              <th className="p-3 text-center">بن</th>
             </tr>
           </thead>
           <tbody>
@@ -99,11 +94,7 @@ export default function DataTable({ comments: initialComments, title }) {
                     مشاهده
                   </button>
                 </td>
-                <td className="p-2">
-                  <button className="w-full rounded bg-black text-white px-3 py-1 text-xs md:text-sm hover:bg-gray-800 transition">
-                    ویرایش
-                  </button>
-                </td>
+
                 <td className="p-2">
                   <button
                     className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition"
@@ -128,16 +119,6 @@ export default function DataTable({ comments: initialComments, title }) {
                       تایید
                     </button>
                   )}
-                </td>
-                <td className="p-2">
-                  <button className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition">
-                    پاسخ
-                  </button>
-                </td>
-                <td className="p-2">
-                  <button className="w-full rounded bg-[#711d1c] text-white px-3 py-1 text-xs md:text-sm hover:bg-red-800 transition">
-                    بن
-                  </button>
                 </td>
               </tr>
             ))}

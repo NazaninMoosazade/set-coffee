@@ -87,8 +87,6 @@ export default function DataTable({ users, title }) {
               <th className="p-2 text-center">نام و نام خانوادگی</th>
               <th className="p-2 text-center">ایمیل</th>
               <th className="p-2 text-center">نقش</th>
-              <th className="p-2 text-center">ویرایش</th>
-              <th className="p-2 text-center">تغییر سطح</th>
               <th className="p-2 text-center">حذف</th>
               {/* <th className="p-2 text-center">بن</th> */}
             </tr>
@@ -104,23 +102,7 @@ export default function DataTable({ users, title }) {
                 <td className="p-2">
                   {user.role === "USER" ? "کاربر عادی" : "مدیر"}
                 </td>
-                <td className="p-2">
-                  <button
-                    type="button"
-                    className="w-full rounded bg-black px-3 py-1 text-sm text-white hover:opacity-80"
-                  >
-                    ویرایش
-                  </button>
-                </td>
-                <td className="p-2">
-                  <button
-                    onClick={() => changeRole(user._id)}
-                    type="button"
-                    className="w-full rounded bg-black px-3 py-1 text-sm text-white hover:opacity-80"
-                  >
-                    تغییر نقش
-                  </button>
-                </td>
+
                 <td className="p-2">
                   <button
                     onClick={() => deleteUser(user._id)}

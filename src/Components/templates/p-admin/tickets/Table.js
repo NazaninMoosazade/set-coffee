@@ -62,9 +62,7 @@ export default function DataTable({ tickets, title }) {
               <th className="p-2 text-sm sm:text-base">عنوان</th>
               <th className="p-2 text-sm sm:text-base">دپارتمان</th>
               <th className="p-2 text-sm sm:text-base">مشاهده</th>
-              <th className="p-2 text-sm sm:text-base">حذف</th>
               <th className="p-2 text-sm sm:text-base">پاسخ</th>
-              <th className="p-2 text-sm sm:text-base">بن</th>
             </tr>
           </thead>
           <tbody>
@@ -89,21 +87,11 @@ export default function DataTable({ tickets, title }) {
                   </button>
                 </td>
                 <td className="p-1 sm:p-2">
-                  <button className="bg-black text-white text-xs sm:text-sm py-1 sm:py-1.5 px-2 sm:px-3 rounded w-full hover:bg-gray-800 transition">
-                    حذف
-                  </button>
-                </td>
-                <td className="p-1 sm:p-2">
                   <button
                     onClick={() => answerToTicket(ticket)}
                     className="bg-[#711d1c] text-white text-xs sm:text-sm py-1 sm:py-1.5 px-2 sm:px-3 rounded w-full hover:bg-red-700 transition"
                   >
                     پاسخ
-                  </button>
-                </td>
-                <td className="p-1 sm:p-2">
-                  <button className="bg-[#711d1c] text-white text-xs sm:text-sm py-1 sm:py-1.5 px-2 sm:px-3 rounded w-full hover:bg-red-700 transition">
-                    بن
                   </button>
                 </td>
               </tr>

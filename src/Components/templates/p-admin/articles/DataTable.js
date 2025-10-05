@@ -1,6 +1,48 @@
+"use client";
 import React from "react";
+import swal from "sweetalert";
+import { useRouter } from "next/navigation";
 
-function ArticlesTable({ articles }) {
+function DataTable({ articles }) {
+  const router = useRouter();
+
+  const deleteArticle = async (articleID) => {
+    swal({
+      title: "آیا از حذف مقاله اطمینان داری؟",
+      text: "پس از حذف، امکان بازگردانی وجود ندارد!",
+      icon: "warning",
+      buttons: ["نه", "بله، حذفش کن"],
+      dangerMode: true,
+    }).then(async (res) => {
+      if (res) {
+        try {
+          const response = await fetch("/api/articles/delete", {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: articleID }),
+          });
+
+          if (response.status === 200) {
+            await swal({
+              title: "مقاله حذف شد ✅",
+              icon: "success",
+              buttons: false,
+              timer: 1500,
+            });
+            router.refresh(); 
+          } else {
+            const data = await response.json();
+            swal("خطا!", data.message || "مشکلی پیش آمده", "error");
+          }
+        } catch (err) {
+          swal("خطا!", "در ارتباط با سرور مشکلی پیش آمده", "error");
+        }
+      }
+    });
+  };
+
   return (
     <div className="overflow-x-auto font-myfont font-Bold">
       <table className="w-full bg-[#f2f7fd] rounded-lg shadow-md">
@@ -40,9 +82,11 @@ function ArticlesTable({ articles }) {
                 {new Date(article.createdAt).toLocaleDateString("fa-IR")}
               </td>
 
-              <td className="px-4 py-2 text-center space-x-2 space-x-reverse">
-              
-                <button className="bg-red-700 text-white px-3 py-1 rounded text-xs md:text-sm hover:bg-red-800 transition">
+              <td className="px-4 py-2 text-center">
+                <button
+                  onClick={() => deleteArticle(article._id)}
+                  className="bg-red-700 text-white px-3 py-1 rounded text-xs md:text-sm hover:bg-red-800 transition"
+                >
                   حذف
                 </button>
               </td>
@@ -54,4 +98,4 @@ function ArticlesTable({ articles }) {
   );
 }
 
-export default ArticlesTable;
+export default DataTable;
