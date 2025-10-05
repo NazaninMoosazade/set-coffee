@@ -28,16 +28,16 @@ async function AdminHomePage() {
         </section>
 
         {/* بخش چارت‌ها */}
-        <div className="flex flex-col md:flex-row gap-3 px-11 mt-8">
+        {/* <div className="flex flex-col md:flex-row gap-3 px-11 mt-8">
           <section className="bg-[#711d1c0f] p-5 rounded text-right w-full md:w-1/2">
             <p className="mb-2 font-medium">آمار فروش</p>
-            {/* <SaleChartWrapper data={tickets} /> */}
+            <SaleChartWrapper data={tickets} />
           </section>
           <section className="bg-[#711d1c0f] p-5 rounded text-right w-full md:w-1/2">
             <p className="mb-2 font-medium">نرخ رشد</p>
-            {/* <GrowthChartWrapper data={users} /> */}
+            <GrowthChartWrapper data={users} />
           </section>
-        </div>
+        </div> */}
       </main>
     </AdminPanelLayout>
   );

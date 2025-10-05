@@ -10,14 +10,13 @@ import connectToDB from "@/configs/db";
 
 const product = async ({params}) => {
 
-  connectToDB()
+  await connectToDB()
   const user = await authUser();
 
   const productID = params.id
   const product = await ProductModel.findOne({_id : productID}).populate("comments");
 
 
-  // const relatedProducts = await ProductModel.find(({smell : product.smell}))
 
   return (
     <div className="overflow-auto">
@@ -47,10 +46,7 @@ const product = async ({params}) => {
           <Tabs product={JSON.parse(JSON.stringify(product))}/>
         </div>
 
-        {/* More Products Section */}
-        {/* <div className="mt-12">
-          <MoreProducts relatedProducts={JSON.parse(JSON.stringify(relatedProducts))}/>
-        </div> */}
+
       </div>
 
       {/* Footer */}

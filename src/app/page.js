@@ -7,10 +7,13 @@ import Promote from "@/Components/templates/index/promote/Promote";
 import Footer from "@/Components/modules/Footer/Footer";
 import { authUser } from "@/utils/Server/auth";
 import ProductModel from '@/models/Product'
+import ArticleModel from "@/models/Article";
 
 export default async function page() {
   const user = await authUser();
   const latestProducts = await ProductModel.find({}).sort({_id : -1}).limit(8)
+
+  const allArtyicles = await ArticleModel.find({}).sort({_id : -1}).limit(4)
 
   return (
     <>
@@ -18,7 +21,7 @@ export default async function page() {
       <Banner /> 
       <Latest products={JSON.parse(JSON.stringify(latestProducts))}/> 
       <Promote />
-      <Articles />
+      <Articles articles={JSON.parse(JSON.stringify(allArtyicles))}/>
       <Footer />
     </>
   );

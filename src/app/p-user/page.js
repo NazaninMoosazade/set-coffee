@@ -1,4 +1,4 @@
-import Layout from "@/Components/layouts/UserPanelLayout";
+import UserPanelLayout from "@/Components/layouts/UserPanelLayout";
 import Box from "@/Components/templates/p-user/index/Box";
 import Tickets from "@/Components/templates/p-user/index/Tickets";
 import Orders from "@/Components/templates/p-user/index/Orders";
@@ -23,7 +23,7 @@ const Page = async () => {
   const wishes = await WishlistModel.find({ user: user._id });
 
   return (
-    <Layout>
+    <UserPanelLayout>
       <main>
         {/* بخش باکس‌ها */}
         <section className="font-myfont font-Bold flex flex-wrap gap-5 mt-12 px-10">
@@ -39,7 +39,7 @@ const Page = async () => {
           <Orders />
         </section>
       </main>
-    </Layout>
+    </UserPanelLayout>
   );
 };
 
