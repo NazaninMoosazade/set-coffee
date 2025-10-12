@@ -64,7 +64,7 @@ const Form = () => {
   };
 
   return (
-    <form className="text-right">
+    <form className="text-right font-Bold font-myfont">
       <span className="text-sm text-gray-400">فرم تماس با ما</span>
       <p className="text-xl mt-4 mb-8">
         برای تماس با ما می توانید فرم زیر را تکمیل کنید

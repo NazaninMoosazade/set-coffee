@@ -9,7 +9,7 @@ import { BiSolidContact } from "react-icons/bi";
 
 const Information = () => {
   return (
-    <section className="text-right text-gray-500">
+    <section className="text-right font-Bold font-myfont text-gray-500">
       <span className="text-sm text-gray-400">تماس با ما</span>
       <p className="text-xl mt-4 mb-8">اطلاعات تماس</p>
 

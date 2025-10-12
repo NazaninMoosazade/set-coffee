@@ -70,18 +70,7 @@ const Promote = () => {
                 است. تجربه ای به قدمت چهار نسل و ارتباط مستمر با مصرف کنندگان
                 قهوه ضامن این ویژگی‌ها است.
               </p>
-              <div className="font-myfont font-Mediom flex flex-col sm:flex-row-reverse gap-4 mt-6">
-                <Link href="/about-us">
-                  <button className=" bg-[#711d1c] border border-[#711d1c] text-white px-5 py-3 cursor-pointer rounded-md">
-                    بیشتر بخوانید
-                  </button>
-                </Link>
-                <Link href="/category">
-                  <button className=" border border-gray-300 px-5 py-3 cursor-pointer bg-white text-black rounded-md">
-                    فروشگاه
-                  </button>
-                </Link>
-              </div>
+      
             </section>
           </main>
         </div>

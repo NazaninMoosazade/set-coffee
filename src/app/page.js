@@ -1,5 +1,5 @@
-// src/app/page.js
-import React, { Suspense } from "react";
+
+import React from "react";
 import Navbar from "@/Components/modules/Navbar/Navbar";
 import Banner from "@/Components/templates/index/banner/Banner";
 import Promote from "@/Components/templates/index/promote/Promote";
@@ -19,7 +19,6 @@ export default async function Page() {
   const latestProducts = await ProductModel.find({}).sort({ _id: -1 }).limit(8);
   const allArticles = await ArticleModel.find({}).sort({ _id: -1 }).limit(4);
 
-  // تبدیل به JSON برای Client Components
   const productsData = JSON.parse(JSON.stringify(latestProducts));
   const articlesData = JSON.parse(JSON.stringify(allArticles));
 
@@ -27,22 +26,14 @@ export default async function Page() {
     <>
       <Navbar isLogin={user} />
       <Banner />
-      
-      {/* Suspense برای Latest */}
-      <Suspense fallback={<div className="text-center font-myfont font-Bold mt-10">در حال بارگذاری محصولات...</div>}>
-        <Latest products={productsData} />
-      </Suspense>
+
+      <Latest products={productsData} />
 
       <Promote />
 
-      {/* Suspense برای Articles */}
-      <Suspense fallback={<div className="text-center font-myfont font-Bold mt-10">در حال بارگذاری مقالات...</div>}>
-        <Articles articles={articlesData} />
-      </Suspense>
+      <Articles articles={articlesData} />
 
       <Footer />
     </>
   );
 }
-
-
