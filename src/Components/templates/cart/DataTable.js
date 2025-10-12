@@ -39,6 +39,14 @@ const Table = () => {
     setTotalPrice(price);
   }
 
+  // حذف یک آیتم از سبد خرید
+const removeFromCart = (index) => {
+  const newCart = [...cart];
+  newCart.splice(index, 1); // آیتم مورد نظر را حذف می‌کند
+  setCart(newCart); // state به‌روزرسانی می‌شود
+  localStorage.setItem("cart", JSON.stringify(newCart)); // localStorage هم به‌روز می‌شود
+};
+
   const checkDiscount = async () => {
     const res = await fetch("/api/discounts/use", {
       method: "PUT",
@@ -63,7 +71,7 @@ const Table = () => {
   const finalPrice = totalPrice - (totalPrice * discountPercent) / 100;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8">
+    <div className="flex flex-col font-bold font-myfont lg:flex-row gap-8">
       {/* جدول سبد خرید */}
       <div className="w-full overflow-x-auto">
         <table className="w-full border-collapse bg-white border-b-2 border-black/10 text-black text-sm sm:text-base">
@@ -79,20 +87,12 @@ const Table = () => {
           <tbody>
             {cart.map((item, idx) => (
               <tr key={idx} className="align-middle text-center">
-                <td className="py-2">
-                  {item.price.toLocaleString()} تومان
-                </td>
+                <td className="py-2">{item.price.toLocaleString()} تومان</td>
 
                 {/* شمارنده */}
                 <td>
                   <div className="flex justify-between border-2 border-black/10 w-fit mx-auto">
-                    <span className="cursor-pointer px-3 py-2 hover:bg-[#34180e] hover:text-white transition">
-                      -
-                    </span>
                     <p className="px-3 py-2">{item.count}</p>
-                    <span className="cursor-pointer px-3 py-2 hover:bg-[#34180e] hover:text-white transition">
-                      +
-                    </span>
                   </div>
                 </td>
 
@@ -104,11 +104,6 @@ const Table = () => {
                 {/* محصول */}
                 <td>
                   <div className="flex items-center gap-3 w-[220px] sm:w-[365px] mx-auto">
-                    <img
-                      src="https://set-coffee.com/wp-content/uploads/2020/12/Red-box-DG--430x430.jpg"
-                      alt=""
-                      className="w-16 sm:w-20"
-                    />
                     <Link
                       href={"/"}
                       className="text-right text-sm sm:text-base leading-5 break-words"
@@ -120,7 +115,10 @@ const Table = () => {
 
                 {/* حذف */}
                 <td className="px-2">
-                  <IoMdClose className="cursor-pointer text-lg sm:text-xl mx-auto" />
+                  <IoMdClose
+                    className="cursor-pointer text-lg sm:text-xl mx-auto"
+                    onClick={() => removeFromCart(idx)}
+                  />
                 </td>
               </tr>
             ))}
@@ -129,9 +127,6 @@ const Table = () => {
 
         {/* دکمه‌های پایین جدول */}
         <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
-          <button className="bg-[#f3f3f3] text-gray-800 px-5 py-3 text-xs sm:text-sm font-semibold uppercase transition hover:bg-gray-200">
-            بروزرسانی سبد خرید
-          </button>
           <div className="flex items-center gap-2">
             <button
               onClick={checkDiscount}
@@ -162,7 +157,9 @@ const Table = () => {
         {discountPercent > 0 && (
           <div className="flex justify-between border-b border-black/10 py-2 text-green-600">
             <p>تخفیف ({discountPercent}%)</p>
-            <p>-{formatter.format((totalPrice * discountPercent) / 100)} تومان</p>
+            <p>
+              -{formatter.format((totalPrice * discountPercent) / 100)} تومان
+            </p>
           </div>
         )}
 
@@ -221,11 +218,11 @@ const Table = () => {
           </p>
         </div>
 
-        <Link href={"/checkout"}>
+      
           <button className="w-full bg-teal-700 text-white py-3 mt-4 font-medium rounded hover:bg-[#711d1c] transition">
             ادامه جهت تصویه حساب
           </button>
-        </Link>
+        
       </div>
     </div>
   );

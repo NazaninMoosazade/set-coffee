@@ -69,12 +69,7 @@ export default function Navbar({ isLogin }) {
 
                 {/* Dropdown */}
                 <div className="font-myfont font-medium absolute z-50 right-0 mt-2 w-48 bg-white border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                  <Link
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    href="/p-user/orders"
-                  >
-                    سفارشات
-                  </Link>
+                 
                   <Link
                     className="block px-4 py-2 hover:bg-gray-100"
                     href="/p-user/tickets"
@@ -92,12 +87,6 @@ export default function Navbar({ isLogin }) {
                     href="/p-user/wishlist"
                   >
                     علاقه‌مندی‌ها
-                  </Link>
-                  <Link
-                    className="block px-4 py-2 hover:bg-gray-100"
-                    href="/p-user/account-details"
-                  >
-                    جزئیات اکانت
                   </Link>
                 </div>
               </li>

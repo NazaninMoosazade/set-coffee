@@ -44,21 +44,7 @@ const Footer = () => {
               <Link href={"/rules"}>قوانین</Link>
             </li>
           </div>
-          <div>
-            <h4 className="mb-4 font-bold">دسترسی سریع</h4>
-            <li className="mt-2 text-neutral-400 hover:text-white">
-              <Link href={"/category"}>فروشگاه</Link>
-            </li>
-            <li className="mt-2 text-neutral-400 hover:text-white">
-              <Link href={"/articles"}>مقالات</Link>
-            </li>
-            <li className="mt-2 text-neutral-400 hover:text-white">
-              <Link href={"/cart"}>سبد خرید</Link>
-            </li>
-            <li className="mt-2 text-neutral-400 hover:text-white">
-              <Link href={"/wishlist"}>علاقه مندی ها</Link>
-            </li>
-          </div>
+  
         </ul>
 
         {/* بخش مجوزها */}

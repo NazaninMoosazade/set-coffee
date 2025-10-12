@@ -1,6 +1,4 @@
 "use client";
-import Footer from "@/Components/modules/Footer/Footer";
-import Navbar from "@/Components/modules/Navbar/Navbar";
 import Stepper from "@/Components/modules/stepper/Stepper";
 import DataTable from "@/Components/templates/cart/DataTable";
 import Link from "next/link";
@@ -14,7 +12,6 @@ const CartPage = () => {
 
   return (
     <>
-      {/* <Navbar/> */}
       <Stepper step="cart" />
 
       <main
@@ -50,7 +47,6 @@ const CartPage = () => {
         )}
       </main>
 
-      {/* <Footer /> */}
     </>
   );
 };
