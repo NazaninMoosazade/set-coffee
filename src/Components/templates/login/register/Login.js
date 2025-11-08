@@ -35,10 +35,11 @@ const Login = ({ showRegisterForm }) => {
       return showSwal("پسوورد را وارد نمایید ", "error", "تلاش مجدد");
     }
 
-    const isValidPassword = valiadtePassword(password);
-    if (!isValidPassword) {
-      return showSwal(" پسوورد به اندازه کافی قوی نیست ", "error", "تلاش مجدد");
-    }
+    
+    // if (pass) {
+    //   return showSwal(" پسوورد به اندازه کافی قوی نیست ", "error", "تلاش مجدد");
+    // }
+
 
     const user = { email: phoneOrEmail, password };
 

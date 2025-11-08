@@ -38,10 +38,10 @@ const Register = ({ showloginForm }) => {
       return showSwal(" ایمیل وارد شده صحیح نیست ", "error", "  تلاش مجدد ");
     }
 
-    const isValidPassword = valiadtePassword(password);
-    if (!isValidPassword) {
+    // const isValidPassword = valiadtePassword(password);
+    if (!password) {
       return showSwal(
-        " پسوورد وارد شده قابل حدس هست ",
+        " لطفا پسورد را وارد کنید ",
         "error",
         "  تلاش مجدد "
       );

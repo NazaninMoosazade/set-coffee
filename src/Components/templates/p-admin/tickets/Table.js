@@ -70,7 +70,7 @@ export default function DataTable({ tickets, title }) {
               <tr key={ticket._id} className="bg-white hover:bg-gray-50">
                 <td className="p-1 sm:p-2 text-sm sm:text-base">{index + 1}</td>
                 <td className="p-1 sm:p-2 text-sm sm:text-base">
-                  {ticket.user.name}
+                  {ticket.name}
                 </td>
                 <td className="p-1 sm:p-2 text-sm sm:text-base">
                   {ticket.title}
